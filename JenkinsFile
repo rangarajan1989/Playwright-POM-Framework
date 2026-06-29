@@ -1,0 +1,51 @@
+pipeline {
+    agent any 
+    
+    tools {
+        // Tells Jenkins to use your locally configured Node.js installation
+        nodejs 'NodeJS-20' 
+    }
+
+    stages {
+        stage('Check Version') {
+            steps {
+                bat 'node -v'
+                bat 'npm -v'
+            }
+        }
+
+        stage('Install Node Dependencies') {
+            steps {
+                // Installs the node modules required for your project
+                bat 'npm ci'
+            }
+        }
+
+        stage('Install Playwright Browsers') {
+            steps {
+                // Installs the necessary browser binaries (Chromium, Firefox, WebKit) locally
+                bat 'npx playwright install --with-deps'
+            }
+        }
+
+        stage('Run Playwright Tests') {
+            steps {
+                // Sets the CI environment variable to true and runs the tests
+                bat 'set CI=true && npx playwright test'
+            }
+        }
+    }
+
+    post {
+        always {
+            // Publishes the HTML report so you can view it directly in Jenkins
+            publishHTML(target: [
+                alwaysLinkToLastBuild: true,
+                keepAll: true,
+                reportDir: 'playwright-report',
+                reportFiles: 'index.html',
+                reportName: 'Playwright HTML Report'
+            ])
+        }
+    }
+}
