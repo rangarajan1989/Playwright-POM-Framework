@@ -32,7 +32,7 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: "on",
-    headless: true,
+    headless: !!process.env.CI,
     video: "on",
     baseURL: "https://naveenautomationlabs.com/opencart/index.php",
   },
@@ -76,7 +76,14 @@ export default defineConfig({
     // },
     {
       name: "Google Chrome",
-      use: { ...devices["Desktop Chrome"], channel: "chrome" },
+      use: {
+        channel: "chrome",
+        viewport: null,
+        launchOptions: {
+          args: ["--start-maximized"],
+          ignoreDefaultArgs: ["--window-size=1280,720"],
+        },
+      },
     },
   ],
 
