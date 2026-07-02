@@ -1,0 +1,1129 @@
+{
+  "config": {
+    "argv": [
+      "/opt/hostedtoolcache/node/24.17.0/x64/bin/node",
+      "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/node_modules/.bin/playwright",
+      "test"
+    ],
+    "configFile": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/playwright.config.ts",
+    "rootDir": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": true,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "appUserName": "raghu@gmail.com",
+      "appPassWord": "Light@1234",
+      "ci": {
+        "commitHref": "https://github.com/rangarajan1989/Playwright-POM-Framework/commit/0fa3cd1960fb9c17f6cd6423fcbbf2a133c63134",
+        "commitHash": "0fa3cd1960fb9c17f6cd6423fcbbf2a133c63134",
+        "buildHref": "https://github.com/rangarajan1989/Playwright-POM-Framework/actions/runs/28590613042"
+      },
+      "gitCommit": {
+        "shortHash": "0fa3cd1",
+        "hash": "0fa3cd1960fb9c17f6cd6423fcbbf2a133c63134",
+        "subject": "E2E Api testing",
+        "body": "E2E Api testing\n",
+        "author": {
+          "name": "=",
+          "email": "rangarajan.ragavan@gmail.com",
+          "time": 1782995910000
+        },
+        "committer": {
+          "name": "=",
+          "email": "rangarajan.ragavan@gmail.com",
+          "time": 1782995910000
+        },
+        "branch": "main"
+      },
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results",
+        "repeatEach": 1,
+        "retries": 2,
+        "metadata": {
+          "appUserName": "raghu@gmail.com",
+          "appPassWord": "Light@1234",
+          "ci": {
+            "commitHref": "https://github.com/rangarajan1989/Playwright-POM-Framework/commit/0fa3cd1960fb9c17f6cd6423fcbbf2a133c63134",
+            "commitHash": "0fa3cd1960fb9c17f6cd6423fcbbf2a133c63134",
+            "buildHref": "https://github.com/rangarajan1989/Playwright-POM-Framework/actions/runs/28590613042"
+          },
+          "gitCommit": {
+            "shortHash": "0fa3cd1",
+            "hash": "0fa3cd1960fb9c17f6cd6423fcbbf2a133c63134",
+            "subject": "E2E Api testing",
+            "body": "E2E Api testing\n",
+            "author": {
+              "name": "=",
+              "email": "rangarajan.ragavan@gmail.com",
+              "time": 1782995910000
+            },
+            "committer": {
+              "name": "=",
+              "email": "rangarajan.ragavan@gmail.com",
+              "time": 1782995910000
+            },
+            "branch": "main"
+          },
+          "actualWorkers": 1
+        },
+        "id": "Google Chrome",
+        "name": "Google Chrome",
+        "testDir": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "html",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "playwright-report/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.61.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "api/e2ecred.spec.ts",
+      "file": "api/e2ecred.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "e2e crud flow test",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Google Chrome",
+              "projectName": "Google Chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2779,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "===================POST CALL ==============\n"
+                    },
+                    {
+                      "text": "{\n  id: \u001b[33m8533113\u001b[39m,\n  name: \u001b[32m'PW Test User'\u001b[39m,\n  email: \u001b[32m'pwtest1782995981996@mail.com'\u001b[39m,\n  gender: \u001b[32m'female'\u001b[39m,\n  status: \u001b[32m'active'\u001b[39m\n}\n"
+                    },
+                    {
+                      "text": "Created User ID: 8533113\n"
+                    },
+                    {
+                      "text": "User is created successfully...\n"
+                    },
+                    {
+                      "text": "===================GET CALL ==============\n"
+                    },
+                    {
+                      "text": "{\n  id: \u001b[33m8533113\u001b[39m,\n  name: \u001b[32m'PW Test User'\u001b[39m,\n  email: \u001b[32m'pwtest1782995981996@mail.com'\u001b[39m,\n  gender: \u001b[32m'female'\u001b[39m,\n  status: \u001b[32m'active'\u001b[39m\n}\n"
+                    },
+                    {
+                      "text": "===================UPDATE CALL ==============\n"
+                    },
+                    {
+                      "text": "{\n  id: \u001b[33m8533113\u001b[39m,\n  name: \u001b[32m'PW Test Automation User'\u001b[39m,\n  email: \u001b[32m'pwtest1782995981996@mail.com'\u001b[39m,\n  gender: \u001b[32m'female'\u001b[39m,\n  status: \u001b[32m'inactive'\u001b[39m\n}\n"
+                    },
+                    {
+                      "text": "User is updated successfully...\n"
+                    },
+                    {
+                      "text": "===================DELETE CALL ==============\n"
+                    },
+                    {
+                      "text": "User is deleted successfully...\n"
+                    },
+                    {
+                      "text": "===================GET CALL ==============\n"
+                    },
+                    {
+                      "text": "{ message: \u001b[32m'Resource not found'\u001b[39m }\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-07-02T12:39:41.956Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/api-e2ecred-e2e-crud-flow-test-Google-Chrome/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "712f0f0ee3488376a71a-e36da4ffb0e4f4d9d34b",
+          "file": "api/e2ecred.spec.ts",
+          "line": 14,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "login.spec.ts",
+      "file": "login.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Login to portal",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Google Chrome",
+              "projectName": "Google Chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 38284,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"homePage\".\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"homePage\".\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"homePage\".\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/util/ElementUtil.ts",
+                        "column": 36,
+                        "line": 83
+                      },
+                      "message": "TimeoutError: locator.fill: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('textbox', { name: 'E-Mail Address' }).first()\u001b[22m\n\n\n   at ../util/ElementUtil.ts:83\n\n  81 |    */\n  82 |   async fill(locator: flexibleLocator, text: string): Promise<void> {\n> 83 |     await this.getLocator(locator).fill(text, { timeout: this.defaultTimeOut });\n     |                                    ^\n  84 |     console.log(`Filled text : ${text} into element : ${locator}`);\n  85 |   }\n  86 |\n    at ElementUtil.fill (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/util/ElementUtil.ts:83:36)\n    at LoginPage.logintohomePage (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/pages/LoginPage.ts:25:20)\n    at Object.homePage (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/fixtures/baseFixture.ts:16:36)"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/pages/LoginPage.ts",
+                        "column": 21,
+                        "line": 21
+                      },
+                      "message": "Error: page.goto: net::ERR_ABORTED; maybe frame was detached?\nCall log:\n\u001b[2m  - navigating to \"https://naveenautomationlabs.com/opencart/index.php?route=account/login\", waiting until \"load\"\u001b[22m\n\n\n   at ../pages/LoginPage.ts:21\n\n  19 |\n  20 |   async navigatetoLogin(baseURL: string | undefined) {\n> 21 |     await this.page.goto(baseURL + \"?route=account/login\");\n     |                     ^\n  22 |   }\n  23 |\n  24 |   async logintohomePage(email: string, password: string): Promise<HomePage> {\n    at LoginPage.navigatetoLogin (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/pages/LoginPage.ts:21:21)\n    at Object.homePage (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/fixtures/baseFixture.ts:12:15)"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-07-02T12:39:44.793Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/login-Login-to-portal-Google-Chrome/error-context.md"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/login-Login-to-portal-Google-Chrome/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/login-Login-to-portal-Google-Chrome/trace.zip"
+                    }
+                  ]
+                },
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 38217,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"homePage\".\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"homePage\".\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"homePage\".\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/util/ElementUtil.ts",
+                        "column": 36,
+                        "line": 83
+                      },
+                      "message": "TimeoutError: locator.fill: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('textbox', { name: 'E-Mail Address' }).first()\u001b[22m\n\n\n   at ../util/ElementUtil.ts:83\n\n  81 |    */\n  82 |   async fill(locator: flexibleLocator, text: string): Promise<void> {\n> 83 |     await this.getLocator(locator).fill(text, { timeout: this.defaultTimeOut });\n     |                                    ^\n  84 |     console.log(`Filled text : ${text} into element : ${locator}`);\n  85 |   }\n  86 |\n    at ElementUtil.fill (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/util/ElementUtil.ts:83:36)\n    at LoginPage.logintohomePage (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/pages/LoginPage.ts:25:20)\n    at Object.homePage (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/fixtures/baseFixture.ts:16:36)"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/pages/LoginPage.ts",
+                        "column": 21,
+                        "line": 21
+                      },
+                      "message": "Error: page.goto: net::ERR_ABORTED; maybe frame was detached?\nCall log:\n\u001b[2m  - navigating to \"https://naveenautomationlabs.com/opencart/index.php?route=account/login\", waiting until \"load\"\u001b[22m\n\n\n   at ../pages/LoginPage.ts:21\n\n  19 |\n  20 |   async navigatetoLogin(baseURL: string | undefined) {\n> 21 |     await this.page.goto(baseURL + \"?route=account/login\");\n     |                     ^\n  22 |   }\n  23 |\n  24 |   async logintohomePage(email: string, password: string): Promise<HomePage> {\n    at LoginPage.navigatetoLogin (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/pages/LoginPage.ts:21:21)\n    at Object.homePage (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/fixtures/baseFixture.ts:12:15)"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 1,
+                  "startTime": "2026-07-02T12:40:24.239Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/login-Login-to-portal-Google-Chrome-retry1/error-context.md"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/login-Login-to-portal-Google-Chrome-retry1/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/login-Login-to-portal-Google-Chrome-retry1/trace.zip"
+                    }
+                  ]
+                },
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 38216,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"homePage\".\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"homePage\".\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"homePage\".\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/util/ElementUtil.ts",
+                        "column": 36,
+                        "line": 83
+                      },
+                      "message": "TimeoutError: locator.fill: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('textbox', { name: 'E-Mail Address' }).first()\u001b[22m\n\n\n   at ../util/ElementUtil.ts:83\n\n  81 |    */\n  82 |   async fill(locator: flexibleLocator, text: string): Promise<void> {\n> 83 |     await this.getLocator(locator).fill(text, { timeout: this.defaultTimeOut });\n     |                                    ^\n  84 |     console.log(`Filled text : ${text} into element : ${locator}`);\n  85 |   }\n  86 |\n    at ElementUtil.fill (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/util/ElementUtil.ts:83:36)\n    at LoginPage.logintohomePage (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/pages/LoginPage.ts:25:20)\n    at Object.homePage (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/fixtures/baseFixture.ts:16:36)"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/pages/LoginPage.ts",
+                        "column": 21,
+                        "line": 21
+                      },
+                      "message": "Error: page.goto: net::ERR_ABORTED; maybe frame was detached?\nCall log:\n\u001b[2m  - navigating to \"https://naveenautomationlabs.com/opencart/index.php?route=account/login\", waiting until \"load\"\u001b[22m\n\n\n   at ../pages/LoginPage.ts:21\n\n  19 |\n  20 |   async navigatetoLogin(baseURL: string | undefined) {\n> 21 |     await this.page.goto(baseURL + \"?route=account/login\");\n     |                     ^\n  22 |   }\n  23 |\n  24 |   async logintohomePage(email: string, password: string): Promise<HomePage> {\n    at LoginPage.navigatetoLogin (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/pages/LoginPage.ts:21:21)\n    at Object.homePage (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/fixtures/baseFixture.ts:12:15)"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 2,
+                  "startTime": "2026-07-02T12:41:03.106Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/login-Login-to-portal-Google-Chrome-retry2/error-context.md"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/login-Login-to-portal-Google-Chrome-retry2/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/login-Login-to-portal-Google-Chrome-retry2/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "41d3fd2474a19feb00a1-f6f3decdebfd8de1aac1",
+          "file": "login.spec.ts",
+          "line": 3,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "searchproduct.spec.ts",
+      "file": "searchproduct.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Search Product macbook",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Google Chrome",
+              "projectName": "Google Chrome",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 38203,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"homePage\".\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"homePage\".\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"homePage\".\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/util/ElementUtil.ts",
+                        "column": 36,
+                        "line": 83
+                      },
+                      "message": "TimeoutError: locator.fill: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('textbox', { name: 'E-Mail Address' }).first()\u001b[22m\n\n\n   at ../util/ElementUtil.ts:83\n\n  81 |    */\n  82 |   async fill(locator: flexibleLocator, text: string): Promise<void> {\n> 83 |     await this.getLocator(locator).fill(text, { timeout: this.defaultTimeOut });\n     |                                    ^\n  84 |     console.log(`Filled text : ${text} into element : ${locator}`);\n  85 |   }\n  86 |\n    at ElementUtil.fill (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/util/ElementUtil.ts:83:36)\n    at LoginPage.logintohomePage (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/pages/LoginPage.ts:25:20)\n    at Object.homePage (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/fixtures/baseFixture.ts:16:36)"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/pages/LoginPage.ts",
+                        "column": 21,
+                        "line": 21
+                      },
+                      "message": "Error: page.goto: net::ERR_ABORTED; maybe frame was detached?\nCall log:\n\u001b[2m  - navigating to \"https://naveenautomationlabs.com/opencart/index.php?route=account/login\", waiting until \"load\"\u001b[22m\n\n\n   at ../pages/LoginPage.ts:21\n\n  19 |\n  20 |   async navigatetoLogin(baseURL: string | undefined) {\n> 21 |     await this.page.goto(baseURL + \"?route=account/login\");\n     |                     ^\n  22 |   }\n  23 |\n  24 |   async logintohomePage(email: string, password: string): Promise<HomePage> {\n    at LoginPage.navigatetoLogin (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/pages/LoginPage.ts:21:21)\n    at Object.homePage (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/fixtures/baseFixture.ts:12:15)"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-07-02T12:41:41.986Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/searchproduct-Search-Product-macbook-Google-Chrome/error-context.md"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/searchproduct-Search-Product-macbook-Google-Chrome/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/searchproduct-Search-Product-macbook-Google-Chrome/trace.zip"
+                    }
+                  ]
+                },
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 38196,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"homePage\".\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"homePage\".\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"homePage\".\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/util/ElementUtil.ts",
+                        "column": 36,
+                        "line": 83
+                      },
+                      "message": "TimeoutError: locator.fill: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('textbox', { name: 'E-Mail Address' }).first()\u001b[22m\n\n\n   at ../util/ElementUtil.ts:83\n\n  81 |    */\n  82 |   async fill(locator: flexibleLocator, text: string): Promise<void> {\n> 83 |     await this.getLocator(locator).fill(text, { timeout: this.defaultTimeOut });\n     |                                    ^\n  84 |     console.log(`Filled text : ${text} into element : ${locator}`);\n  85 |   }\n  86 |\n    at ElementUtil.fill (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/util/ElementUtil.ts:83:36)\n    at LoginPage.logintohomePage (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/pages/LoginPage.ts:25:20)\n    at Object.homePage (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/fixtures/baseFixture.ts:16:36)"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/pages/LoginPage.ts",
+                        "column": 21,
+                        "line": 21
+                      },
+                      "message": "Error: page.goto: net::ERR_ABORTED; maybe frame was detached?\nCall log:\n\u001b[2m  - navigating to \"https://naveenautomationlabs.com/opencart/index.php?route=account/login\", waiting until \"load\"\u001b[22m\n\n\n   at ../pages/LoginPage.ts:21\n\n  19 |\n  20 |   async navigatetoLogin(baseURL: string | undefined) {\n> 21 |     await this.page.goto(baseURL + \"?route=account/login\");\n     |                     ^\n  22 |   }\n  23 |\n  24 |   async logintohomePage(email: string, password: string): Promise<HomePage> {\n    at LoginPage.navigatetoLogin (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/pages/LoginPage.ts:21:21)\n    at Object.homePage (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/fixtures/baseFixture.ts:12:15)"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 1,
+                  "startTime": "2026-07-02T12:42:20.857Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/searchproduct-Search-Product-macbook-Google-Chrome-retry1/error-context.md"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/searchproduct-Search-Product-macbook-Google-Chrome-retry1/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/searchproduct-Search-Product-macbook-Google-Chrome-retry1/trace.zip"
+                    }
+                  ]
+                },
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 38177,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"homePage\".\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"homePage\".\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"homePage\".\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/util/ElementUtil.ts",
+                        "column": 36,
+                        "line": 83
+                      },
+                      "message": "TimeoutError: locator.fill: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('textbox', { name: 'E-Mail Address' }).first()\u001b[22m\n\n\n   at ../util/ElementUtil.ts:83\n\n  81 |    */\n  82 |   async fill(locator: flexibleLocator, text: string): Promise<void> {\n> 83 |     await this.getLocator(locator).fill(text, { timeout: this.defaultTimeOut });\n     |                                    ^\n  84 |     console.log(`Filled text : ${text} into element : ${locator}`);\n  85 |   }\n  86 |\n    at ElementUtil.fill (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/util/ElementUtil.ts:83:36)\n    at LoginPage.logintohomePage (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/pages/LoginPage.ts:25:20)\n    at Object.homePage (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/fixtures/baseFixture.ts:16:36)"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/pages/LoginPage.ts",
+                        "column": 21,
+                        "line": 21
+                      },
+                      "message": "Error: page.goto: net::ERR_ABORTED; maybe frame was detached?\nCall log:\n\u001b[2m  - navigating to \"https://naveenautomationlabs.com/opencart/index.php?route=account/login\", waiting until \"load\"\u001b[22m\n\n\n   at ../pages/LoginPage.ts:21\n\n  19 |\n  20 |   async navigatetoLogin(baseURL: string | undefined) {\n> 21 |     await this.page.goto(baseURL + \"?route=account/login\");\n     |                     ^\n  22 |   }\n  23 |\n  24 |   async logintohomePage(email: string, password: string): Promise<HomePage> {\n    at LoginPage.navigatetoLogin (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/pages/LoginPage.ts:21:21)\n    at Object.homePage (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/fixtures/baseFixture.ts:12:15)"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 2,
+                  "startTime": "2026-07-02T12:42:59.722Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/searchproduct-Search-Product-macbook-Google-Chrome-retry2/error-context.md"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/searchproduct-Search-Product-macbook-Google-Chrome-retry2/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/searchproduct-Search-Product-macbook-Google-Chrome-retry2/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "5215ae21b14c194392d8-2076d53ca71bda7f9e66",
+          "file": "searchproduct.spec.ts",
+          "line": 9,
+          "column": 7
+        },
+        {
+          "title": "Search Product samsung",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Google Chrome",
+              "projectName": "Google Chrome",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 38283,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"homePage\".\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"homePage\".\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"homePage\".\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/util/ElementUtil.ts",
+                        "column": 36,
+                        "line": 83
+                      },
+                      "message": "TimeoutError: locator.fill: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('textbox', { name: 'E-Mail Address' }).first()\u001b[22m\n\n\n   at ../util/ElementUtil.ts:83\n\n  81 |    */\n  82 |   async fill(locator: flexibleLocator, text: string): Promise<void> {\n> 83 |     await this.getLocator(locator).fill(text, { timeout: this.defaultTimeOut });\n     |                                    ^\n  84 |     console.log(`Filled text : ${text} into element : ${locator}`);\n  85 |   }\n  86 |\n    at ElementUtil.fill (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/util/ElementUtil.ts:83:36)\n    at LoginPage.logintohomePage (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/pages/LoginPage.ts:25:20)\n    at Object.homePage (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/fixtures/baseFixture.ts:16:36)"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/pages/LoginPage.ts",
+                        "column": 21,
+                        "line": 21
+                      },
+                      "message": "Error: page.goto: net::ERR_ABORTED; maybe frame was detached?\nCall log:\n\u001b[2m  - navigating to \"https://naveenautomationlabs.com/opencart/index.php?route=account/login\", waiting until \"load\"\u001b[22m\n\n\n   at ../pages/LoginPage.ts:21\n\n  19 |\n  20 |   async navigatetoLogin(baseURL: string | undefined) {\n> 21 |     await this.page.goto(baseURL + \"?route=account/login\");\n     |                     ^\n  22 |   }\n  23 |\n  24 |   async logintohomePage(email: string, password: string): Promise<HomePage> {\n    at LoginPage.navigatetoLogin (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/pages/LoginPage.ts:21:21)\n    at Object.homePage (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/fixtures/baseFixture.ts:12:15)"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-07-02T12:43:38.540Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/searchproduct-Search-Product-samsung-Google-Chrome/error-context.md"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/searchproduct-Search-Product-samsung-Google-Chrome/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/searchproduct-Search-Product-samsung-Google-Chrome/trace.zip"
+                    }
+                  ]
+                },
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 38202,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"homePage\".\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"homePage\".\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"homePage\".\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/util/ElementUtil.ts",
+                        "column": 36,
+                        "line": 83
+                      },
+                      "message": "TimeoutError: locator.fill: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('textbox', { name: 'E-Mail Address' }).first()\u001b[22m\n\n\n   at ../util/ElementUtil.ts:83\n\n  81 |    */\n  82 |   async fill(locator: flexibleLocator, text: string): Promise<void> {\n> 83 |     await this.getLocator(locator).fill(text, { timeout: this.defaultTimeOut });\n     |                                    ^\n  84 |     console.log(`Filled text : ${text} into element : ${locator}`);\n  85 |   }\n  86 |\n    at ElementUtil.fill (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/util/ElementUtil.ts:83:36)\n    at LoginPage.logintohomePage (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/pages/LoginPage.ts:25:20)\n    at Object.homePage (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/fixtures/baseFixture.ts:16:36)"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/pages/LoginPage.ts",
+                        "column": 21,
+                        "line": 21
+                      },
+                      "message": "Error: page.goto: net::ERR_ABORTED; maybe frame was detached?\nCall log:\n\u001b[2m  - navigating to \"https://naveenautomationlabs.com/opencart/index.php?route=account/login\", waiting until \"load\"\u001b[22m\n\n\n   at ../pages/LoginPage.ts:21\n\n  19 |\n  20 |   async navigatetoLogin(baseURL: string | undefined) {\n> 21 |     await this.page.goto(baseURL + \"?route=account/login\");\n     |                     ^\n  22 |   }\n  23 |\n  24 |   async logintohomePage(email: string, password: string): Promise<HomePage> {\n    at LoginPage.navigatetoLogin (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/pages/LoginPage.ts:21:21)\n    at Object.homePage (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/fixtures/baseFixture.ts:12:15)"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 1,
+                  "startTime": "2026-07-02T12:44:17.486Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/searchproduct-Search-Product-samsung-Google-Chrome-retry1/error-context.md"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/searchproduct-Search-Product-samsung-Google-Chrome-retry1/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/searchproduct-Search-Product-samsung-Google-Chrome-retry1/trace.zip"
+                    }
+                  ]
+                },
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 38291,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"homePage\".\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"homePage\".\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"homePage\".\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/util/ElementUtil.ts",
+                        "column": 36,
+                        "line": 83
+                      },
+                      "message": "TimeoutError: locator.fill: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('textbox', { name: 'E-Mail Address' }).first()\u001b[22m\n\n\n   at ../util/ElementUtil.ts:83\n\n  81 |    */\n  82 |   async fill(locator: flexibleLocator, text: string): Promise<void> {\n> 83 |     await this.getLocator(locator).fill(text, { timeout: this.defaultTimeOut });\n     |                                    ^\n  84 |     console.log(`Filled text : ${text} into element : ${locator}`);\n  85 |   }\n  86 |\n    at ElementUtil.fill (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/util/ElementUtil.ts:83:36)\n    at LoginPage.logintohomePage (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/pages/LoginPage.ts:25:20)\n    at Object.homePage (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/fixtures/baseFixture.ts:16:36)"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/pages/LoginPage.ts",
+                        "column": 21,
+                        "line": 21
+                      },
+                      "message": "Error: page.goto: net::ERR_ABORTED; maybe frame was detached?\nCall log:\n\u001b[2m  - navigating to \"https://naveenautomationlabs.com/opencart/index.php?route=account/login\", waiting until \"load\"\u001b[22m\n\n\n   at ../pages/LoginPage.ts:21\n\n  19 |\n  20 |   async navigatetoLogin(baseURL: string | undefined) {\n> 21 |     await this.page.goto(baseURL + \"?route=account/login\");\n     |                     ^\n  22 |   }\n  23 |\n  24 |   async logintohomePage(email: string, password: string): Promise<HomePage> {\n    at LoginPage.navigatetoLogin (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/pages/LoginPage.ts:21:21)\n    at Object.homePage (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/fixtures/baseFixture.ts:12:15)"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 2,
+                  "startTime": "2026-07-02T12:44:56.355Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/searchproduct-Search-Product-samsung-Google-Chrome-retry2/error-context.md"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/searchproduct-Search-Product-samsung-Google-Chrome-retry2/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/searchproduct-Search-Product-samsung-Google-Chrome-retry2/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "5215ae21b14c194392d8-c12acd9327e98f7ca66f",
+          "file": "searchproduct.spec.ts",
+          "line": 9,
+          "column": 7
+        },
+        {
+          "title": "Click on Product and get image count",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Google Chrome",
+              "projectName": "Google Chrome",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 38242,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"homePage\".\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"homePage\".\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"homePage\".\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/util/ElementUtil.ts",
+                        "column": 36,
+                        "line": 83
+                      },
+                      "message": "TimeoutError: locator.fill: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('textbox', { name: 'E-Mail Address' }).first()\u001b[22m\n\n\n   at ../util/ElementUtil.ts:83\n\n  81 |    */\n  82 |   async fill(locator: flexibleLocator, text: string): Promise<void> {\n> 83 |     await this.getLocator(locator).fill(text, { timeout: this.defaultTimeOut });\n     |                                    ^\n  84 |     console.log(`Filled text : ${text} into element : ${locator}`);\n  85 |   }\n  86 |\n    at ElementUtil.fill (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/util/ElementUtil.ts:83:36)\n    at LoginPage.logintohomePage (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/pages/LoginPage.ts:25:20)\n    at Object.homePage (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/fixtures/baseFixture.ts:16:36)"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/pages/LoginPage.ts",
+                        "column": 21,
+                        "line": 21
+                      },
+                      "message": "Error: page.goto: net::ERR_ABORTED; maybe frame was detached?\nCall log:\n\u001b[2m  - navigating to \"https://naveenautomationlabs.com/opencart/index.php?route=account/login\", waiting until \"load\"\u001b[22m\n\n\n   at ../pages/LoginPage.ts:21\n\n  19 |\n  20 |   async navigatetoLogin(baseURL: string | undefined) {\n> 21 |     await this.page.goto(baseURL + \"?route=account/login\");\n     |                     ^\n  22 |   }\n  23 |\n  24 |   async logintohomePage(email: string, password: string): Promise<HomePage> {\n    at LoginPage.navigatetoLogin (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/pages/LoginPage.ts:21:21)\n    at Object.homePage (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/fixtures/baseFixture.ts:12:15)"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-07-02T12:45:35.306Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/searchproduct-Click-on-Product-and-get-image-count-Google-Chrome/error-context.md"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/searchproduct-Click-on-Product-and-get-image-count-Google-Chrome/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/searchproduct-Click-on-Product-and-get-image-count-Google-Chrome/trace.zip"
+                    }
+                  ]
+                },
+                {
+                  "workerIndex": 10,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 38192,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"homePage\".\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"homePage\".\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"homePage\".\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/util/ElementUtil.ts",
+                        "column": 36,
+                        "line": 83
+                      },
+                      "message": "TimeoutError: locator.fill: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('textbox', { name: 'E-Mail Address' }).first()\u001b[22m\n\n\n   at ../util/ElementUtil.ts:83\n\n  81 |    */\n  82 |   async fill(locator: flexibleLocator, text: string): Promise<void> {\n> 83 |     await this.getLocator(locator).fill(text, { timeout: this.defaultTimeOut });\n     |                                    ^\n  84 |     console.log(`Filled text : ${text} into element : ${locator}`);\n  85 |   }\n  86 |\n    at ElementUtil.fill (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/util/ElementUtil.ts:83:36)\n    at LoginPage.logintohomePage (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/pages/LoginPage.ts:25:20)\n    at Object.homePage (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/fixtures/baseFixture.ts:16:36)"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/pages/LoginPage.ts",
+                        "column": 21,
+                        "line": 21
+                      },
+                      "message": "Error: page.goto: net::ERR_ABORTED; maybe frame was detached?\nCall log:\n\u001b[2m  - navigating to \"https://naveenautomationlabs.com/opencart/index.php?route=account/login\", waiting until \"load\"\u001b[22m\n\n\n   at ../pages/LoginPage.ts:21\n\n  19 |\n  20 |   async navigatetoLogin(baseURL: string | undefined) {\n> 21 |     await this.page.goto(baseURL + \"?route=account/login\");\n     |                     ^\n  22 |   }\n  23 |\n  24 |   async logintohomePage(email: string, password: string): Promise<HomePage> {\n    at LoginPage.navigatetoLogin (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/pages/LoginPage.ts:21:21)\n    at Object.homePage (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/fixtures/baseFixture.ts:12:15)"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 1,
+                  "startTime": "2026-07-02T12:46:14.191Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/searchproduct-Click-on-Product-and-get-image-count-Google-Chrome-retry1/error-context.md"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/searchproduct-Click-on-Product-and-get-image-count-Google-Chrome-retry1/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/searchproduct-Click-on-Product-and-get-image-count-Google-Chrome-retry1/trace.zip"
+                    }
+                  ]
+                },
+                {
+                  "workerIndex": 11,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 38170,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"homePage\".\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"homePage\".\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"homePage\".\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/util/ElementUtil.ts",
+                        "column": 36,
+                        "line": 83
+                      },
+                      "message": "TimeoutError: locator.fill: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('textbox', { name: 'E-Mail Address' }).first()\u001b[22m\n\n\n   at ../util/ElementUtil.ts:83\n\n  81 |    */\n  82 |   async fill(locator: flexibleLocator, text: string): Promise<void> {\n> 83 |     await this.getLocator(locator).fill(text, { timeout: this.defaultTimeOut });\n     |                                    ^\n  84 |     console.log(`Filled text : ${text} into element : ${locator}`);\n  85 |   }\n  86 |\n    at ElementUtil.fill (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/util/ElementUtil.ts:83:36)\n    at LoginPage.logintohomePage (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/pages/LoginPage.ts:25:20)\n    at Object.homePage (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/fixtures/baseFixture.ts:16:36)"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/pages/LoginPage.ts",
+                        "column": 21,
+                        "line": 21
+                      },
+                      "message": "Error: page.goto: net::ERR_ABORTED; maybe frame was detached?\nCall log:\n\u001b[2m  - navigating to \"https://naveenautomationlabs.com/opencart/index.php?route=account/login\", waiting until \"load\"\u001b[22m\n\n\n   at ../pages/LoginPage.ts:21\n\n  19 |\n  20 |   async navigatetoLogin(baseURL: string | undefined) {\n> 21 |     await this.page.goto(baseURL + \"?route=account/login\");\n     |                     ^\n  22 |   }\n  23 |\n  24 |   async logintohomePage(email: string, password: string): Promise<HomePage> {\n    at LoginPage.navigatetoLogin (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/pages/LoginPage.ts:21:21)\n    at Object.homePage (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/fixtures/baseFixture.ts:12:15)"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 2,
+                  "startTime": "2026-07-02T12:46:53.033Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/searchproduct-Click-on-Product-and-get-image-count-Google-Chrome-retry2/error-context.md"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/searchproduct-Click-on-Product-and-get-image-count-Google-Chrome-retry2/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/searchproduct-Click-on-Product-and-get-image-count-Google-Chrome-retry2/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "5215ae21b14c194392d8-98103feb2d5c41886443",
+          "file": "searchproduct.spec.ts",
+          "line": 15,
+          "column": 5
+        },
+        {
+          "title": "Get Product MetaData",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Google Chrome",
+              "projectName": "Google Chrome",
+              "results": [
+                {
+                  "workerIndex": 12,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 38203,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"homePage\".\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"homePage\".\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"homePage\".\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/util/ElementUtil.ts",
+                        "column": 36,
+                        "line": 83
+                      },
+                      "message": "TimeoutError: locator.fill: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('textbox', { name: 'E-Mail Address' }).first()\u001b[22m\n\n\n   at ../util/ElementUtil.ts:83\n\n  81 |    */\n  82 |   async fill(locator: flexibleLocator, text: string): Promise<void> {\n> 83 |     await this.getLocator(locator).fill(text, { timeout: this.defaultTimeOut });\n     |                                    ^\n  84 |     console.log(`Filled text : ${text} into element : ${locator}`);\n  85 |   }\n  86 |\n    at ElementUtil.fill (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/util/ElementUtil.ts:83:36)\n    at LoginPage.logintohomePage (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/pages/LoginPage.ts:25:20)\n    at Object.homePage (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/fixtures/baseFixture.ts:16:36)"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/pages/LoginPage.ts",
+                        "column": 21,
+                        "line": 21
+                      },
+                      "message": "Error: page.goto: net::ERR_ABORTED; maybe frame was detached?\nCall log:\n\u001b[2m  - navigating to \"https://naveenautomationlabs.com/opencart/index.php?route=account/login\", waiting until \"load\"\u001b[22m\n\n\n   at ../pages/LoginPage.ts:21\n\n  19 |\n  20 |   async navigatetoLogin(baseURL: string | undefined) {\n> 21 |     await this.page.goto(baseURL + \"?route=account/login\");\n     |                     ^\n  22 |   }\n  23 |\n  24 |   async logintohomePage(email: string, password: string): Promise<HomePage> {\n    at LoginPage.navigatetoLogin (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/pages/LoginPage.ts:21:21)\n    at Object.homePage (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/fixtures/baseFixture.ts:12:15)"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-07-02T12:47:31.855Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/searchproduct-Get-Product-MetaData-Google-Chrome/error-context.md"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/searchproduct-Get-Product-MetaData-Google-Chrome/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/searchproduct-Get-Product-MetaData-Google-Chrome/trace.zip"
+                    }
+                  ]
+                },
+                {
+                  "workerIndex": 13,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 38258,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"homePage\".\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"homePage\".\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"homePage\".\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/util/ElementUtil.ts",
+                        "column": 36,
+                        "line": 83
+                      },
+                      "message": "TimeoutError: locator.fill: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('textbox', { name: 'E-Mail Address' }).first()\u001b[22m\n\n\n   at ../util/ElementUtil.ts:83\n\n  81 |    */\n  82 |   async fill(locator: flexibleLocator, text: string): Promise<void> {\n> 83 |     await this.getLocator(locator).fill(text, { timeout: this.defaultTimeOut });\n     |                                    ^\n  84 |     console.log(`Filled text : ${text} into element : ${locator}`);\n  85 |   }\n  86 |\n    at ElementUtil.fill (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/util/ElementUtil.ts:83:36)\n    at LoginPage.logintohomePage (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/pages/LoginPage.ts:25:20)\n    at Object.homePage (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/fixtures/baseFixture.ts:16:36)"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/pages/LoginPage.ts",
+                        "column": 21,
+                        "line": 21
+                      },
+                      "message": "Error: page.goto: net::ERR_ABORTED; maybe frame was detached?\nCall log:\n\u001b[2m  - navigating to \"https://naveenautomationlabs.com/opencart/index.php?route=account/login\", waiting until \"load\"\u001b[22m\n\n\n   at ../pages/LoginPage.ts:21\n\n  19 |\n  20 |   async navigatetoLogin(baseURL: string | undefined) {\n> 21 |     await this.page.goto(baseURL + \"?route=account/login\");\n     |                     ^\n  22 |   }\n  23 |\n  24 |   async logintohomePage(email: string, password: string): Promise<HomePage> {\n    at LoginPage.navigatetoLogin (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/pages/LoginPage.ts:21:21)\n    at Object.homePage (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/fixtures/baseFixture.ts:12:15)"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 1,
+                  "startTime": "2026-07-02T12:48:10.710Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/searchproduct-Get-Product-MetaData-Google-Chrome-retry1/error-context.md"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/searchproduct-Get-Product-MetaData-Google-Chrome-retry1/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/searchproduct-Get-Product-MetaData-Google-Chrome-retry1/trace.zip"
+                    }
+                  ]
+                },
+                {
+                  "workerIndex": 14,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 38176,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"homePage\".\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"homePage\".\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"homePage\".\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/util/ElementUtil.ts",
+                        "column": 36,
+                        "line": 83
+                      },
+                      "message": "TimeoutError: locator.fill: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('textbox', { name: 'E-Mail Address' }).first()\u001b[22m\n\n\n   at ../util/ElementUtil.ts:83\n\n  81 |    */\n  82 |   async fill(locator: flexibleLocator, text: string): Promise<void> {\n> 83 |     await this.getLocator(locator).fill(text, { timeout: this.defaultTimeOut });\n     |                                    ^\n  84 |     console.log(`Filled text : ${text} into element : ${locator}`);\n  85 |   }\n  86 |\n    at ElementUtil.fill (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/util/ElementUtil.ts:83:36)\n    at LoginPage.logintohomePage (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/pages/LoginPage.ts:25:20)\n    at Object.homePage (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/fixtures/baseFixture.ts:16:36)"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/pages/LoginPage.ts",
+                        "column": 21,
+                        "line": 21
+                      },
+                      "message": "Error: page.goto: net::ERR_ABORTED; maybe frame was detached?\nCall log:\n\u001b[2m  - navigating to \"https://naveenautomationlabs.com/opencart/index.php?route=account/login\", waiting until \"load\"\u001b[22m\n\n\n   at ../pages/LoginPage.ts:21\n\n  19 |\n  20 |   async navigatetoLogin(baseURL: string | undefined) {\n> 21 |     await this.page.goto(baseURL + \"?route=account/login\");\n     |                     ^\n  22 |   }\n  23 |\n  24 |   async logintohomePage(email: string, password: string): Promise<HomePage> {\n    at LoginPage.navigatetoLogin (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/pages/LoginPage.ts:21:21)\n    at Object.homePage (/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/fixtures/baseFixture.ts:12:15)"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 2,
+                  "startTime": "2026-07-02T12:48:49.631Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/searchproduct-Get-Product-MetaData-Google-Chrome-retry2/error-context.md"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/searchproduct-Get-Product-MetaData-Google-Chrome-retry2/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/searchproduct-Get-Product-MetaData-Google-Chrome-retry2/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "5215ae21b14c194392d8-66cda95ffd6054e3f3bd",
+          "file": "searchproduct.spec.ts",
+          "line": 21,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-07-02T12:39:41.337Z",
+    "duration": 586731.801,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 5,
+    "flaky": 0
+  }
+}

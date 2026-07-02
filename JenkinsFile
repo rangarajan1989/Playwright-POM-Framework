@@ -38,7 +38,7 @@ pipeline {
 
     post {
         always {
-            // Publishes the HTML report so you can view it directly in Jenkins
+            // 1. Publishes the HTML report so you can view it directly in Jenkins
             publishHTML(target: [
                 alwaysLinkToLastBuild: true,
                 keepAll: true,
@@ -46,6 +46,15 @@ pipeline {
                 reportFiles: 'index.html',
                 reportName: 'Playwright HTML Report'
             ])
+
+            // 2. Sends an email notification every single time (Passed or Failed)
+            mail to: 'your-email@example.com',
+                 subject: "Jenkins Job Status: ${currentBuild.currentResult} - ${env.JOB_NAME} [Build #${env.BUILD_NUMBER}]",
+                 body: """The Playwright test execution has finished.
+                         
+Status: ${currentBuild.currentResult}
+Build URL: ${env.BUILD_URL}
+Playwright HTML Report: ${env.BUILD_URL}Playwright_20HTML_20Report/"""
         }
     }
 }
