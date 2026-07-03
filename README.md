@@ -65,3 +65,44 @@ This framework is highly optimized for CI/CD environments, utilizing custom fixt
 - The framework uses TypeScript via Playwright’s built-in support, so no separate transpilation step is required.
 - If you need a different browser or environment, edit `playwright.config.ts` and adjust the `projects` or `use` settings.
 - For CI execution, ensure `CI=true` is set so retries, headless mode, and worker behavior are applied correctly.
+
+## ☁️ BrowserStack Execution
+
+This framework supports execution on BrowserStack using the BrowserStack Node SDK.
+
+### Prerequisites
+
+1. Create a `.env` file in the project root.
+2. Add your BrowserStack credentials:
+
+```env
+BROWSERSTACK_USERNAME=<your_browserstack_username>
+BROWSERSTACK_ACCESS_KEY=<your_browserstack_access_key>
+```
+
+Alternatively, export these environment variables in your shell or CI/CD pipeline.
+
+### Run Tests on BrowserStack
+
+Execute the following command:
+
+```bash
+node --env-file=.env node_modules/browserstack-node-sdk/src/bin/runner.js playwright test --config=playwright.config.ts
+```
+
+This command performs the following:
+
+- Loads environment variables from the `.env` file.
+- Starts the BrowserStack Node SDK.
+- Executes the Playwright test suite using the specified Playwright configuration.
+- Uploads test results to your BrowserStack dashboard.
+
+### Run a Specific Test
+
+```bash
+node --env-file=.env node_modules/browserstack-node-sdk/src/bin/runner.js playwright test tests/login.spec.ts --config=playwright.config.ts
+```
+
+### BrowserStack Dashboard
+
+After execution, test results can be viewed in your BrowserStack Automate dashboard.
