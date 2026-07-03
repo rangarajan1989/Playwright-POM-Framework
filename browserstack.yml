@@ -1,0 +1,35 @@
+userName: BROWSERSTACK_USERNAME
+accessKey: BROWSERSTACK_ACCESS_KEY
+platforms:
+  # 1. Desktop Windows (Chromium baseline) - OK
+  - os: Windows
+    osVersion: 11
+    browserName: Chrome
+    browserVersion: latest
+
+  # 2. Desktop Windows (Gecko baseline) - OK
+  - os: Windows
+    osVersion: 11
+    browserName: Firefox
+    browserVersion: latest
+
+  # 3. Desktop Mac (Safari/WebKit baseline) - OK
+  - os: OS X
+    osVersion: Sonoma
+    browserName: playwright-webkit
+    browserVersion: latest
+
+  # 4. Premium iOS Mobile
+  - deviceName: iPhone 15 Pro
+    osVersion: 17
+    browserName: safari # ✅ FIXED: Changed from 'playwright-webkit' to 'safari'
+    deviceOrientation: portrait
+
+  # 5. Market-Dominant Android Mobile
+  - deviceName: Samsung Galaxy S24
+    osVersion: 14
+    browserName: playwright-chromium # ✅ FIXED: Changed from 'chrome' to 'playwright-chromium'
+    deviceOrientation: portrait
+
+selfHeal: true
+disableAutoCaptureLogs: true

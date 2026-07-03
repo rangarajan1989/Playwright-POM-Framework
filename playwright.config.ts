@@ -11,6 +11,16 @@ import { defineConfig, devices } from "@playwright/test";
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
+const caps = {
+  browser: "chrome",
+  browser_version: "latest",
+  os: "Windows",
+  os_version: "11",
+  name: "Playwright POM Framework Tests",
+  build: "Build-1.0",
+  "browserstack.username": process.env.BROWSERSTACK_USERNAME || "",
+  "browserstack.key": process.env.BROWSERSTACK_ACCESS_KEY || "",
+};
 export default defineConfig({
   testDir: "./tests",
   /* Run tests in files in parallel */
