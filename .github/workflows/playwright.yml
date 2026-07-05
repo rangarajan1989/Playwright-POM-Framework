@@ -54,6 +54,15 @@ jobs:
           path: playwright-report/
           retention-days: 30
 
+      - name: Create github-pages directory
+        if: always()
+        run: |
+          mkdir -p github-pages
+          cp -r playwright-report/* github-pages/ || true
+          if [ ! -f github-pages/index.html ]; then
+            echo "<html><body><h1>Playwright Test Reports</h1><p>No reports available yet. Awaiting first test run.</p></body></html>" > github-pages/index.html
+          fi
+
       - name: Send Email Notification
         if: always()
         uses: dawidd6/action-send-mail@v3
@@ -113,3 +122,32 @@ jobs:
               <a href="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" class="btn" style="color: white;">View Workflow Run</a>
             </body>
             </html>
+
+      # ========== Deploy to GitHub Pages ==========
+      - name: 🌐 Deploy to GitHub Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: github-pages
+          keep_files: true
+
+      # ========== Print Report URLs ==========
+      - name: 🔗 Report URLs
+        if: always()
+        run: |
+          echo "============================================"
+          echo "📊 PLAYWRIGHT REPORTS PUBLISHED!"
+          echo "============================================"
+          echo ""
+          echo "🏠 GitHub Pages URL:"
+          echo "   https://rangarajan1989.github.io/POMPlaywrightPractice/"
+          echo ""
+          echo "📋 Test Report:"
+          echo "   https://rangarajan1989.github.io/POMPlaywrightPractice/index.html"
+          echo ""
+          echo "📝 Results JSON:"
+          echo "   https://rangarajan1989.github.io/POMPlaywrightPractice/results.json"
+          echo ""
+          echo "============================================"
