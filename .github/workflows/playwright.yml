@@ -217,8 +217,3 @@ jobs:
           echo "   https://rangarajan1989.github.io/Playwright-POM-Framework/allure/"
           echo ""
           echo "============================================"
-git add .github/workflows/playwright.yml
-git commit -m "fix: correct shell script syntax in Allure report generation"
-git pushgit add .github/workflows/playwright.yml
-git commit -m "fix: correct shell script syntax in Allure report generation"
-git push
