@@ -11,5 +11,8 @@
     "@playwright/test": "^1.61.1",
     "@types/node": "^26.0.1",
     "browserstack-node-sdk": "^1.60.1"
+  },
+  "dependencies": {
+    "csv-parse": "^7.0.1"
   }
 }
