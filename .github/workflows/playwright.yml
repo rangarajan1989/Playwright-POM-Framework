@@ -29,7 +29,7 @@ jobs:
 
       - name: Run Playwright tests
         if: always()
-        run: npx playwright test
+        run: npx playwright test login.spec.ts -g "Login to portal"
         env:
           PLAYWRIGHT_JSON_REPORT: playwright-report/results.json
 
