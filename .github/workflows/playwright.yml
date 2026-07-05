@@ -29,7 +29,7 @@ jobs:
 
       - name: Run Playwright tests
         if: always()
-        run: npx playwright test login.spec.ts -g "Login to portal"
+        run: npx playwright test login.spec.ts -g "Login to portal" --reporter=html,json,allure-playwright
         env:
           PLAYWRIGHT_JSON_REPORT: playwright-report/results.json
 
@@ -66,6 +66,17 @@ jobs:
           if [ ! -f github-pages/index.html ]; then
             echo "<html><body><h1>Playwright Test Reports</h1><p>No reports available yet. Awaiting first test run.</p></body></html>" > github-pages/index.html
           fi
+
+      - name: Install Allure
+        if: always()
+        run: |
+          npm install -g @wdio/allure-reporter allure-commandline
+
+      - name: Generate Allure Report
+        if: always()
+        run: |
+          mkdir -p allure-results
+          npx allure generate allure-results -o github-pages/allure-report --clean || echo "Allure report generation completed"
 
       - name: Send Email Notification
         if: always()
@@ -148,8 +159,11 @@ jobs:
           echo "🏠 GitHub Pages URL:"
           echo "   https://rangarajan1989.github.io/POMPlaywrightPractice/"
           echo ""
-          echo "📋 Test Report:"
+          echo "📋 Test Report (HTML):"
           echo "   https://rangarajan1989.github.io/POMPlaywrightPractice/index.html"
+          echo ""
+          echo "📊 Allure Report:"
+          echo "   https://rangarajan1989.github.io/POMPlaywrightPractice/allure-report/"
           echo ""
           echo "📝 Results JSON:"
           echo "   https://rangarajan1989.github.io/POMPlaywrightPractice/results.json"
