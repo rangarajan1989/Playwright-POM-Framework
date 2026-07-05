@@ -72,11 +72,9 @@ This framework is highly optimized for CI/CD environments, utilizing custom fixt
 
 After every test run, the following reports are automatically generated and published to GitHub Pages:
 
-| Report                   | URL                                                                                                                                            |
-| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| 🏠 **Main Dashboard**    | [https://rangarajan1989.github.io/Playwright-POM-Framework/](https://rangarajan1989.github.io/Playwright-POM-Framework/)                       |
-| 📋 **Playwright Report** | [https://rangarajan1989.github.io/Playwright-POM-Framework/playwright/](https://rangarajan1989.github.io/Playwright-POM-Framework/playwright/) |
-| 📊 **Allure Report**     | [https://rangarajan1989.github.io/Playwright-POM-Framework/allure/](https://rangarajan1989.github.io/Playwright-POM-Framework/allure/)         |
+[![Main Dashboard](https://img.shields.io/badge/📊-Main%20Dashboard-blue?style=for-the-badge&logo=github)](https://rangarajan1989.github.io/Playwright-POM-Framework/)
+[![Playwright Report](https://img.shields.io/badge/📋-Playwright%20Report-brightgreen?style=for-the-badge&logo=playwright)](https://rangarajan1989.github.io/Playwright-POM-Framework/playwright/)
+[![Allure Report](https://img.shields.io/badge/📊-Allure%20Report-ff6b6b?style=for-the-badge&logo=qemu)](https://rangarajan1989.github.io/Playwright-POM-Framework/allure/)
 
 **Note:** Reports are automatically updated after each GitHub Actions workflow run. It may take a few minutes for changes to be published.
 

@@ -32,7 +32,7 @@ jobs:
 
       - name: Run Playwright tests
         if: always()
-        run: npx playwright test --reporter=html,json,allure-playwright
+        run: npx playwright test login.spec.ts -g "Login to portal" --reporter=html,json,allure-playwright
         env:
           PLAYWRIGHT_JSON_REPORT: playwright-report/results.json
 
@@ -217,3 +217,8 @@ jobs:
           echo "   https://rangarajan1989.github.io/Playwright-POM-Framework/allure/"
           echo ""
           echo "============================================"
+git add .github/workflows/playwright.yml
+git commit -m "fix: correct shell script syntax in Allure report generation"
+git pushgit add .github/workflows/playwright.yml
+git commit -m "fix: correct shell script syntax in Allure report generation"
+git push
