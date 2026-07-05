@@ -32,7 +32,7 @@ jobs:
 
       - name: Run Playwright tests
         if: always()
-        run: npx playwright test login.spec.ts -g "Login to portal" --reporter=html,json,allure-playwright
+        run: npx playwright test
         env:
           PLAYWRIGHT_JSON_REPORT: playwright-report/results.json
 
@@ -44,15 +44,20 @@ jobs:
             PASSED=$(node -p "require('./playwright-report/results.json').stats.expected || 0")
             FAILED=$(node -p "require('./playwright-report/results.json').stats.unexpected || 0")
             SKIPPED=$(node -p "require('./playwright-report/results.json').stats.skipped || 0")
-            
-            echo "passed=$PASSED" >> $GITHUB_OUTPUT
-            echo "failed=$FAILED" >> $GITHUB_OUTPUT
-            echo "skipped=$SKIPPED" >> $GITHUB_OUTPUT
           else
-            echo "passed=0" >> $GITHUB_OUTPUT
-            echo "failed=0" >> $GITHUB_OUTPUT
-            echo "skipped=0" >> $GITHUB_OUTPUT
+            PASSED=0
+            FAILED=0
+            SKIPPED=0
           fi
+
+          echo "passed=$PASSED" >> $GITHUB_OUTPUT
+          echo "failed=$FAILED" >> $GITHUB_OUTPUT
+          echo "skipped=$SKIPPED" >> $GITHUB_OUTPUT
+
+          echo "Test Results:"
+          echo "  Passed: $PASSED"
+          echo "  Failed: $FAILED"
+          echo "  Skipped: $SKIPPED"
 
       - uses: actions/upload-artifact@v4
         if: always()
@@ -145,16 +150,16 @@ jobs:
                 </thead>
                 <tbody>
                   <tr>
-                    <td>Passed Tests</td>
-                    <td class="pass">${{ steps.parse_results.outputs.passed }}</td>
+                    <td>✅ Passed Tests</td>
+                    <td class="pass">${{ steps.parse_results.outputs.passed }} tests</td>
                   </tr>
                   <tr>
-                    <td>Failed Tests</td>
-                    <td class="fail">${{ steps.parse_results.outputs.failed }}</td>
+                    <td>❌ Failed Tests</td>
+                    <td class="fail">${{ steps.parse_results.outputs.failed }} tests</td>
                   </tr>
                   <tr>
-                    <td>Skipped Tests</td>
-                    <td class="skip">${{ steps.parse_results.outputs.skipped }}</td>
+                    <td>⏭️  Skipped Tests</td>
+                    <td class="skip">${{ steps.parse_results.outputs.skipped }} tests</td>
                   </tr>
                 </tbody>
               </table>
