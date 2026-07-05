@@ -1,0 +1,786 @@
+{
+  "config": {
+    "argv": [
+      "/opt/hostedtoolcache/node/24.18.0/x64/bin/node",
+      "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/node_modules/.bin/playwright",
+      "test"
+    ],
+    "configFile": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/playwright.config.ts",
+    "rootDir": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": true,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "appUserName": "raghu@gmail.com",
+      "appPassWord": "Light@1234",
+      "ci": {
+        "commitHref": "https://github.com/rangarajan1989/Playwright-POM-Framework/commit/8187d4007c1cfa9265785b6cdff65bd506e5a44a",
+        "commitHash": "8187d4007c1cfa9265785b6cdff65bd506e5a44a",
+        "buildHref": "https://github.com/rangarajan1989/Playwright-POM-Framework/actions/runs/28736244841"
+      },
+      "gitCommit": {
+        "shortHash": "8187d40",
+        "hash": "8187d4007c1cfa9265785b6cdff65bd506e5a44a",
+        "subject": "fix: improve test count parsing and email notification display",
+        "body": "fix: improve test count parsing and email notification display\n",
+        "author": {
+          "name": "=",
+          "email": "rangarajan.ragavan@gmail.com",
+          "time": 1783243665000
+        },
+        "committer": {
+          "name": "=",
+          "email": "rangarajan.ragavan@gmail.com",
+          "time": 1783243665000
+        },
+        "branch": "main"
+      },
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results",
+        "repeatEach": 1,
+        "retries": 2,
+        "metadata": {
+          "appUserName": "raghu@gmail.com",
+          "appPassWord": "Light@1234",
+          "ci": {
+            "commitHref": "https://github.com/rangarajan1989/Playwright-POM-Framework/commit/8187d4007c1cfa9265785b6cdff65bd506e5a44a",
+            "commitHash": "8187d4007c1cfa9265785b6cdff65bd506e5a44a",
+            "buildHref": "https://github.com/rangarajan1989/Playwright-POM-Framework/actions/runs/28736244841"
+          },
+          "gitCommit": {
+            "shortHash": "8187d40",
+            "hash": "8187d4007c1cfa9265785b6cdff65bd506e5a44a",
+            "subject": "fix: improve test count parsing and email notification display",
+            "body": "fix: improve test count parsing and email notification display\n",
+            "author": {
+              "name": "=",
+              "email": "rangarajan.ragavan@gmail.com",
+              "time": 1783243665000
+            },
+            "committer": {
+              "name": "=",
+              "email": "rangarajan.ragavan@gmail.com",
+              "time": 1783243665000
+            },
+            "branch": "main"
+          },
+          "actualWorkers": 1
+        },
+        "id": "Google Chrome",
+        "name": "Google Chrome",
+        "testDir": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "html",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "playwright-report/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.61.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "api/e2ecred.spec.ts",
+      "file": "api/e2ecred.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "e2e crud flow test",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Google Chrome",
+              "projectName": "Google Chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2888,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "===================POST CALL ==============\n"
+                    },
+                    {
+                      "text": "{\n  id: \u001b[33m8537013\u001b[39m,\n  name: \u001b[32m'PW Test User'\u001b[39m,\n  email: \u001b[32m'pwtest1783243764244@mail.com'\u001b[39m,\n  gender: \u001b[32m'female'\u001b[39m,\n  status: \u001b[32m'active'\u001b[39m\n}\n"
+                    },
+                    {
+                      "text": "Created User ID: 8537013\n"
+                    },
+                    {
+                      "text": "User is created successfully...\n"
+                    },
+                    {
+                      "text": "===================GET CALL ==============\n"
+                    },
+                    {
+                      "text": "{\n  id: \u001b[33m8537013\u001b[39m,\n  name: \u001b[32m'PW Test User'\u001b[39m,\n  email: \u001b[32m'pwtest1783243764244@mail.com'\u001b[39m,\n  gender: \u001b[32m'female'\u001b[39m,\n  status: \u001b[32m'active'\u001b[39m\n}\n"
+                    },
+                    {
+                      "text": "===================UPDATE CALL ==============\n"
+                    },
+                    {
+                      "text": "{\n  id: \u001b[33m8537013\u001b[39m,\n  name: \u001b[32m'PW Test Automation User'\u001b[39m,\n  email: \u001b[32m'pwtest1783243764244@mail.com'\u001b[39m,\n  gender: \u001b[32m'female'\u001b[39m,\n  status: \u001b[32m'inactive'\u001b[39m\n}\n"
+                    },
+                    {
+                      "text": "User is updated successfully...\n"
+                    },
+                    {
+                      "text": "===================DELETE CALL ==============\n"
+                    },
+                    {
+                      "text": "User is deleted successfully...\n"
+                    },
+                    {
+                      "text": "===================GET CALL ==============\n"
+                    },
+                    {
+                      "text": "{ message: \u001b[32m'Resource not found'\u001b[39m }\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-07-05T09:29:24.212Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/api-e2ecred-e2e-crud-flow-test-Google-Chrome/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "712f0f0ee3488376a71a-e36da4ffb0e4f4d9d34b",
+          "file": "api/e2ecred.spec.ts",
+          "line": 14,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "login.spec.ts",
+      "file": "login.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Login to portal",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Google Chrome",
+              "projectName": "Google Chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6461,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "Filled text : raghu@gmail.com into element : getByRole('textbox', { name: 'E-Mail Address' })\n"
+                    },
+                    {
+                      "text": "Filled text : Light@1234 into element : getByRole('textbox', { name: 'Password' })\n"
+                    },
+                    {
+                      "text": "Clicked on element : locator('input[value=\\'Login\\']')\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-07-05T09:29:27.144Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/login-Login-to-portal-Google-Chrome/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/login-Login-to-portal-Google-Chrome/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "41d3fd2474a19feb00a1-f6f3decdebfd8de1aac1",
+          "file": "login.spec.ts",
+          "line": 18,
+          "column": 5
+        },
+        {
+          "title": "Register Email Alice ",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Google Chrome",
+              "projectName": "Google Chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3844,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "Clicked on element : getByRole('link', { name: 'Register' })\n"
+                    },
+                    {
+                      "text": "Filled text : Alice into element : getByRole('textbox', { name: 'First Name' })\n"
+                    },
+                    {
+                      "text": "Filled text : Smith into element : getByRole('textbox', { name: 'Last Name' })\n"
+                    },
+                    {
+                      "text": "Filled text : auto1783243780685@gmail.com into element : getByRole('textbox', { name: 'E-Mail' })\n"
+                    },
+                    {
+                      "text": "Filled text : 1234567890 into element : getByRole('textbox', { name: 'Telephone' })\n"
+                    },
+                    {
+                      "text": "Filled text : Password@123 into element : getByRole('textbox', { name: 'Password' }).first()\n"
+                    },
+                    {
+                      "text": "Filled text : Password@123 into element : getByRole('textbox', { name: 'Password Confirm' })\n"
+                    },
+                    {
+                      "text": "Clicked on element : getByRole('radio', { name: 'Yes' })\n"
+                    },
+                    {
+                      "text": "Clicked on element : locator('[name=\"agree\"]')\n"
+                    },
+                    {
+                      "text": "Clicked on element : getByRole('button', { name: 'Continue' })\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-07-05T09:29:38.575Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/login-Register-Email-Alice--Google-Chrome/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/login-Register-Email-Alice--Google-Chrome/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "41d3fd2474a19feb00a1-5cc8cee41106111ffd3d",
+          "file": "login.spec.ts",
+          "line": 23,
+          "column": 7
+        },
+        {
+          "title": "Register Email Bob ",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Google Chrome",
+              "projectName": "Google Chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3724,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "Clicked on element : getByRole('link', { name: 'Register' })\n"
+                    },
+                    {
+                      "text": "Filled text : Bob into element : getByRole('textbox', { name: 'First Name' })\n"
+                    },
+                    {
+                      "text": "Filled text : Jones into element : getByRole('textbox', { name: 'Last Name' })\n"
+                    },
+                    {
+                      "text": "Filled text : auto1783243784513@gmail.com into element : getByRole('textbox', { name: 'E-Mail' })\n"
+                    },
+                    {
+                      "text": "Filled text : 9876543210 into element : getByRole('textbox', { name: 'Telephone' })\n"
+                    },
+                    {
+                      "text": "Filled text : Secret@456 into element : getByRole('textbox', { name: 'Password' }).first()\n"
+                    },
+                    {
+                      "text": "Filled text : Secret@456 into element : getByRole('textbox', { name: 'Password Confirm' })\n"
+                    },
+                    {
+                      "text": "Clicked on element : getByRole('radio', { name: 'No' })\n"
+                    },
+                    {
+                      "text": "Clicked on element : locator('[name=\"agree\"]')\n"
+                    },
+                    {
+                      "text": "Clicked on element : getByRole('button', { name: 'Continue' })\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-07-05T09:29:42.479Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/login-Register-Email-Bob--Google-Chrome/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/login-Register-Email-Bob--Google-Chrome/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "41d3fd2474a19feb00a1-0ef9c6e906c91c641496",
+          "file": "login.spec.ts",
+          "line": 23,
+          "column": 7
+        },
+        {
+          "title": "Register Email Charlie ",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Google Chrome",
+              "projectName": "Google Chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3068,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "Clicked on element : getByRole('link', { name: 'Register' })\n"
+                    },
+                    {
+                      "text": "Filled text : Charlie into element : getByRole('textbox', { name: 'First Name' })\n"
+                    },
+                    {
+                      "text": "Filled text : Brown into element : getByRole('textbox', { name: 'Last Name' })\n"
+                    },
+                    {
+                      "text": "Filled text : auto1783243788185@gmail.com into element : getByRole('textbox', { name: 'E-Mail' })\n"
+                    },
+                    {
+                      "text": "Filled text : 9988776655 into element : getByRole('textbox', { name: 'Telephone' })\n"
+                    },
+                    {
+                      "text": "Filled text : Hello@789 into element : getByRole('textbox', { name: 'Password' }).first()\n"
+                    },
+                    {
+                      "text": "Filled text : Hello@789 into element : getByRole('textbox', { name: 'Password Confirm' })\n"
+                    },
+                    {
+                      "text": "Clicked on element : getByRole('radio', { name: 'Yes' })\n"
+                    },
+                    {
+                      "text": "Clicked on element : locator('[name=\"agree\"]')\n"
+                    },
+                    {
+                      "text": "Clicked on element : getByRole('button', { name: 'Continue' })\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-07-05T09:29:46.272Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/login-Register-Email-Charlie--Google-Chrome/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/login-Register-Email-Charlie--Google-Chrome/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "41d3fd2474a19feb00a1-9c42dca577de85270f42",
+          "file": "login.spec.ts",
+          "line": 23,
+          "column": 7
+        }
+      ]
+    },
+    {
+      "title": "searchproduct.spec.ts",
+      "file": "searchproduct.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Search Product macbook",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Google Chrome",
+              "projectName": "Google Chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6734,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "Filled text : raghu@gmail.com into element : getByRole('textbox', { name: 'E-Mail Address' })\n"
+                    },
+                    {
+                      "text": "Filled text : Light@1234 into element : getByRole('textbox', { name: 'Password' })\n"
+                    },
+                    {
+                      "text": "Clicked on element : locator('input[value=\\'Login\\']')\n"
+                    },
+                    {
+                      "text": "Filled text : macbook into element : getByPlaceholder('Search')\n"
+                    },
+                    {
+                      "text": "Clicked on element : locator('div#search>span button.btn.btn-default.btn-lg')\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-07-05T09:29:49.389Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/searchproduct-Search-Product-macbook-Google-Chrome/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/searchproduct-Search-Product-macbook-Google-Chrome/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5215ae21b14c194392d8-2076d53ca71bda7f9e66",
+          "file": "searchproduct.spec.ts",
+          "line": 9,
+          "column": 7
+        },
+        {
+          "title": "Search Product samsung",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Google Chrome",
+              "projectName": "Google Chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6726,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "Filled text : raghu@gmail.com into element : getByRole('textbox', { name: 'E-Mail Address' })\n"
+                    },
+                    {
+                      "text": "Filled text : Light@1234 into element : getByRole('textbox', { name: 'Password' })\n"
+                    },
+                    {
+                      "text": "Clicked on element : locator('input[value=\\'Login\\']')\n"
+                    },
+                    {
+                      "text": "Filled text : samsung into element : getByPlaceholder('Search')\n"
+                    },
+                    {
+                      "text": "Clicked on element : locator('div#search>span button.btn.btn-default.btn-lg')\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-07-05T09:29:56.168Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/searchproduct-Search-Product-samsung-Google-Chrome/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/searchproduct-Search-Product-samsung-Google-Chrome/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5215ae21b14c194392d8-c12acd9327e98f7ca66f",
+          "file": "searchproduct.spec.ts",
+          "line": 9,
+          "column": 7
+        },
+        {
+          "title": "Click on Product and get image count",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Google Chrome",
+              "projectName": "Google Chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10501,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "Filled text : raghu@gmail.com into element : getByRole('textbox', { name: 'E-Mail Address' })\n"
+                    },
+                    {
+                      "text": "Filled text : Light@1234 into element : getByRole('textbox', { name: 'Password' })\n"
+                    },
+                    {
+                      "text": "Clicked on element : locator('input[value=\\'Login\\']')\n"
+                    },
+                    {
+                      "text": "Filled text : macbook into element : getByPlaceholder('Search')\n"
+                    },
+                    {
+                      "text": "Clicked on element : locator('div#search>span button.btn.btn-default.btn-lg')\n"
+                    },
+                    {
+                      "text": "Clicked on element : getByRole('link', { name: 'MacBook Pro' })\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-07-05T09:30:02.933Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/searchproduct-Click-on-Product-and-get-image-count-Google-Chrome/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/searchproduct-Click-on-Product-and-get-image-count-Google-Chrome/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5215ae21b14c194392d8-98103feb2d5c41886443",
+          "file": "searchproduct.spec.ts",
+          "line": 15,
+          "column": 5
+        },
+        {
+          "title": "Get Product MetaData",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Google Chrome",
+              "projectName": "Google Chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10331,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "Filled text : raghu@gmail.com into element : getByRole('textbox', { name: 'E-Mail Address' })\n"
+                    },
+                    {
+                      "text": "Filled text : Light@1234 into element : getByRole('textbox', { name: 'Password' })\n"
+                    },
+                    {
+                      "text": "Clicked on element : locator('input[value=\\'Login\\']')\n"
+                    },
+                    {
+                      "text": "Filled text : macbook into element : getByPlaceholder('Search')\n"
+                    },
+                    {
+                      "text": "Clicked on element : locator('div#search>span button.btn.btn-default.btn-lg')\n"
+                    },
+                    {
+                      "text": "Clicked on element : getByRole('link', { name: 'MacBook Pro' })\n"
+                    },
+                    {
+                      "text": "ProductName: MacBook Pro\n"
+                    },
+                    {
+                      "text": "Brand:  Apple\n"
+                    },
+                    {
+                      "text": "Product Code:  Product 18\n"
+                    },
+                    {
+                      "text": "Reward Points:  800\n"
+                    },
+                    {
+                      "text": "Availability:  Out Of Stock\n"
+                    },
+                    {
+                      "text": "Price:  $2,000.00\n"
+                    },
+                    {
+                      "text": "Ex Tax:  $2,000.00\n"
+                    },
+                    {
+                      "text": "Images: 4\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-07-05T09:30:13.501Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/searchproduct-Get-Product-MetaData-Google-Chrome/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/searchproduct-Get-Product-MetaData-Google-Chrome/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5215ae21b14c194392d8-66cda95ffd6054e3f3bd",
+          "file": "searchproduct.spec.ts",
+          "line": 21,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-07-05T09:29:23.834Z",
+    "duration": 60122.15,
+    "expected": 9,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}
