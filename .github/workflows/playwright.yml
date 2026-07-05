@@ -65,10 +65,33 @@ jobs:
         if: always()
         run: |
           mkdir -p github-pages
-          cp -r playwright-report/* github-pages/ || true
-          if [ ! -f github-pages/index.html ]; then
-            echo "<html><body><h1>Playwright Test Reports</h1><p>No reports available yet. Awaiting first test run.</p></body></html>" > github-pages/index.html
+          mkdir -p github-pages/playwright
+          mkdir -p github-pages/allure
+
+          # Copy Playwright reports
+          if [ -d "playwright-report" ]; then
+            cp -r playwright-report/* github-pages/playwright/ 2>/dev/null || true
           fi
+
+          # Create main index.html with links
+          cat > github-pages/index.html <<'EOF'
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <title>Test Reports</title>
+            <style>
+              body { font-family: Arial, sans-serif; margin: 40px; }
+              .report-link { display: inline-block; margin: 10px; padding: 15px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; }
+              .report-link:hover { background: #0056b3; }
+            </style>
+          </head>
+          <body>
+            <h1>📊 Test Reports</h1>
+            <a href="playwright/" class="report-link">📋 Playwright Report</a>
+            <a href="allure/" class="report-link">📊 Allure Report</a>
+          </body>
+          </html>
+          EOF
 
       - name: Install Allure
         if: always()
@@ -79,7 +102,7 @@ jobs:
         if: always()
         run: |
           mkdir -p allure-results
-          npx allure generate allure-results -o github-pages/allure-report --clean || echo "Allure report generation completed"
+          npx allure generate allure-results -o github-pages/allure --clean || echo "Allure report will be generated on next run"
 
       - name: Send Email Notification
         if: always()
@@ -156,19 +179,16 @@ jobs:
         if: always()
         run: |
           echo "============================================"
-          echo "📊 PLAYWRIGHT REPORTS PUBLISHED!"
+          echo "📊 TEST REPORTS PUBLISHED!"
           echo "============================================"
           echo ""
-          echo "🏠 GitHub Pages URL:"
-          echo "   https://rangarajan1989.github.io/POMPlaywrightPractice/"
+          echo "🏠 Main Dashboard:"
+          echo "   https://rangarajan1989.github.io/Playwright-POM-Framework/"
           echo ""
-          echo "📋 Test Report (HTML):"
-          echo "   https://rangarajan1989.github.io/POMPlaywrightPractice/index.html"
+          echo "📋 Playwright Report:"
+          echo "   https://rangarajan1989.github.io/Playwright-POM-Framework/playwright/"
           echo ""
           echo "📊 Allure Report:"
-          echo "   https://rangarajan1989.github.io/POMPlaywrightPractice/allure-report/"
-          echo ""
-          echo "📝 Results JSON:"
-          echo "   https://rangarajan1989.github.io/POMPlaywrightPractice/results.json"
+          echo "   https://rangarajan1989.github.io/Playwright-POM-Framework/allure/"
           echo ""
           echo "============================================"
