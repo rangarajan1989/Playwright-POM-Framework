@@ -1,0 +1,191 @@
+{
+  "config": {
+    "argv": [
+      "/opt/hostedtoolcache/node/24.18.0/x64/bin/node",
+      "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/node_modules/.bin/playwright",
+      "test",
+      "login.spec.ts",
+      "-g",
+      "Login to portal"
+    ],
+    "configFile": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/playwright.config.ts",
+    "rootDir": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": true,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "appUserName": "raghu@gmail.com",
+      "appPassWord": "Light@1234",
+      "ci": {
+        "commitHref": "https://github.com/rangarajan1989/Playwright-POM-Framework/commit/409330e4e2e680e65def0773eb96dca2a5fb7078",
+        "commitHash": "409330e4e2e680e65def0773eb96dca2a5fb7078",
+        "buildHref": "https://github.com/rangarajan1989/Playwright-POM-Framework/actions/runs/28735258582"
+      },
+      "gitCommit": {
+        "shortHash": "409330e",
+        "hash": "409330e4e2e680e65def0773eb96dca2a5fb7078",
+        "subject": "running for github pages",
+        "body": "running for github pages\n",
+        "author": {
+          "name": "=",
+          "email": "rangarajan.ragavan@gmail.com",
+          "time": 1783241262000
+        },
+        "committer": {
+          "name": "=",
+          "email": "rangarajan.ragavan@gmail.com",
+          "time": 1783241262000
+        },
+        "branch": "main"
+      },
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results",
+        "repeatEach": 1,
+        "retries": 2,
+        "metadata": {
+          "appUserName": "raghu@gmail.com",
+          "appPassWord": "Light@1234",
+          "ci": {
+            "commitHref": "https://github.com/rangarajan1989/Playwright-POM-Framework/commit/409330e4e2e680e65def0773eb96dca2a5fb7078",
+            "commitHash": "409330e4e2e680e65def0773eb96dca2a5fb7078",
+            "buildHref": "https://github.com/rangarajan1989/Playwright-POM-Framework/actions/runs/28735258582"
+          },
+          "gitCommit": {
+            "shortHash": "409330e",
+            "hash": "409330e4e2e680e65def0773eb96dca2a5fb7078",
+            "subject": "running for github pages",
+            "body": "running for github pages\n",
+            "author": {
+              "name": "=",
+              "email": "rangarajan.ragavan@gmail.com",
+              "time": 1783241262000
+            },
+            "committer": {
+              "name": "=",
+              "email": "rangarajan.ragavan@gmail.com",
+              "time": 1783241262000
+            },
+            "branch": "main"
+          },
+          "actualWorkers": 1
+        },
+        "id": "Google Chrome",
+        "name": "Google Chrome",
+        "testDir": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "html",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "playwright-report/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.61.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "login.spec.ts",
+      "file": "login.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Login to portal",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Google Chrome",
+              "projectName": "Google Chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9951,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "Filled text : raghu@gmail.com into element : getByRole('textbox', { name: 'E-Mail Address' })\n"
+                    },
+                    {
+                      "text": "Filled text : Light@1234 into element : getByRole('textbox', { name: 'Password' })\n"
+                    },
+                    {
+                      "text": "Clicked on element : locator('input[value=\\'Login\\']')\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-07-05T08:49:14.130Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/login-Login-to-portal-Google-Chrome/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/Playwright-POM-Framework/Playwright-POM-Framework/test-results/login-Login-to-portal-Google-Chrome/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "41d3fd2474a19feb00a1-f6f3decdebfd8de1aac1",
+          "file": "login.spec.ts",
+          "line": 18,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-07-05T08:49:13.490Z",
+    "duration": 16681.071,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}
