@@ -111,22 +111,22 @@ jobs:
           else
             echo "No allure results found, creating placeholder..."
             mkdir -p github-pages/allure
-            cat > github-pages/allure/index.html <<'EOF'
-            <!DOCTYPE html>
-            <html>
-            <head>
-              <title>Allure Report</title>
-              <style>
-                body { font-family: Arial, sans-serif; margin: 40px; text-align: center; }
-                h1 { color: #333; }
-              </style>
-            </head>
-            <body>
-              <h1>📊 Allure Report</h1>
-              <p>Allure report will be available after the first test run with results.</p>
-            </body>
-            </html>
-            EOF
+            cat > github-pages/allure/index.html << 'EOFHTML'
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <title>Allure Report</title>
+            <style>
+              body { font-family: Arial, sans-serif; margin: 40px; text-align: center; }
+              h1 { color: #333; }
+            </style>
+          </head>
+          <body>
+            <h1>📊 Allure Report</h1>
+            <p>Allure report will be available after the first test run with results.</p>
+          </body>
+          </html>
+          EOFHTML
           fi
 
       - name: Send Email Notification
