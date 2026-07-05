@@ -66,6 +66,22 @@ This framework is highly optimized for CI/CD environments, utilizing custom fixt
 - If you need a different browser or environment, edit `playwright.config.ts` and adjust the `projects` or `use` settings.
 - For CI execution, ensure `CI=true` is set so retries, headless mode, and worker behavior are applied correctly.
 
+---
+
+## 📊 Test Reports & Dashboard
+
+After every test run, the following reports are automatically generated and published to GitHub Pages:
+
+| Report                   | URL                                                                                                                                            |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| 🏠 **Main Dashboard**    | [https://rangarajan1989.github.io/Playwright-POM-Framework/](https://rangarajan1989.github.io/Playwright-POM-Framework/)                       |
+| 📋 **Playwright Report** | [https://rangarajan1989.github.io/Playwright-POM-Framework/playwright/](https://rangarajan1989.github.io/Playwright-POM-Framework/playwright/) |
+| 📊 **Allure Report**     | [https://rangarajan1989.github.io/Playwright-POM-Framework/allure/](https://rangarajan1989.github.io/Playwright-POM-Framework/allure/)         |
+
+**Note:** Reports are automatically updated after each GitHub Actions workflow run. It may take a few minutes for changes to be published.
+
+---
+
 ## ☁️ BrowserStack Execution
 
 This framework supports execution on BrowserStack using the BrowserStack Node SDK.
