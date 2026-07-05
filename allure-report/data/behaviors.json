@@ -1,1 +1,1 @@
-{"uid":"b1a8273437954620fa374b796ffaacdd","name":"behaviors","children":[]}
+{"uid":"b1a8273437954620fa374b796ffaacdd","name":"behaviors","children":[{"name":"Login to portal","uid":"26eaae76c465da23","parentUid":"b1a8273437954620fa374b796ffaacdd","status":"passed","time":{"start":1783242303231,"stop":1783242320984,"duration":17753},"flaky":false,"newFailed":false,"newPassed":false,"newBroken":false,"retriesCount":0,"retriesStatusChange":false,"parameters":["Google Chrome"],"tags":[]}]}
