@@ -9,10 +9,13 @@
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.61.1",
-    "@types/node": "^26.0.1",
-    "browserstack-node-sdk": "^1.60.1"
+    "@types/node": "^26.1.0",
+    "browserstack-node-sdk": "^1.60.1",
+    "playwright-html-reporter": "^0.1.11"
   },
   "dependencies": {
-    "csv-parse": "^7.0.1"
+    "ajv": "^8.20.0",
+    "csv-parse": "^7.0.1",
+    "dotenv": "^17.4.2"
   }
 }

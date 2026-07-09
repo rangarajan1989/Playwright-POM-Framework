@@ -14,7 +14,7 @@ export const test = base.extend<MyFixture>({
     const password = testInfo.project.metadata.appPassWord;
 
     let homePage = await loginPage.logintohomePage(userName, password);
-    await page.waitForTimeout(4000);
+    //await page.waitForTimeout(4000);
     expect(homePage.isUserLoggedIn()).toBeTruthy();
 
     await use(homePage);

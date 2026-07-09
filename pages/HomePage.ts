@@ -24,7 +24,7 @@ export class HomePage {
   }
 
   async logoutofHomePage() {
-    await this.elu.click(this.logOut, { force: true, timeout: 5000 });
+    await this.elu.click(this.logOut, { force: true });
     console.log(`Logged Out successfully`);
   }
 
