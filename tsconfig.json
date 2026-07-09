@@ -11,10 +11,6 @@
     "forceConsistentCasingInFileNames": true,
     "types": ["node"]
   },
-  "include": [
-    "tests/**/*.ts",
-    "pages/**/*.ts",
-    "playwright.config.ts",
-    "tests-examples/demo-todo-app.spec.ts"
-  ]
+  "include": ["**/*.ts", "**/*.d.ts"],
+  "exclude": ["node_modules", "playwright-report", "test-results", "trace"]
 }

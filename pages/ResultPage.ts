@@ -20,7 +20,7 @@ export class ResultPage {
 
   async clickonProduct(pName: string): Promise<ProductPage> {
     await this.elu.click(this.page.getByRole("link", { name: `${pName}` }));
-    await this.page.waitForTimeout(3000);
+    //await this.page.waitForTimeout(3000);
     return new ProductPage(this.page);
   }
 }

@@ -32,18 +32,19 @@ export class ProductPage {
     this.productMap.set("ProductName", await this.productHeader.innerText());
     let product: string[] = await this.productDetails.allInnerTexts();
     for (let p of product) {
-      const metaKey = p.split(":")[0];
-      const metaValue = p.split(":")[1];
+      const metaKey = p.split(":")[0].trim();
+      const metaValue = p.split(":")[1].trim();
       this.productMap.set(metaKey, metaValue);
     }
   }
 
   private async returproductPrice() {
-    let productPrice: string[] = await this.productPrice.allInnerTexts();
-    for (let p of productPrice) {
-      this.productMap.set("Price", p.split(":")[1]);
-      this.productMap.set("Ex Tax", p.split(":")[1]);
-    }
+    const productPricing: string[] = await this.productPrice.allInnerTexts();
+    const productPrice = productPricing[0].trim();
+    const productExTax = productPricing[1].split(":")[1].trim();
+
+    this.productMap.set("price", productPrice);
+    this.productMap.set("extaxprice", productExTax);
   }
 
   async printproductDetails() {

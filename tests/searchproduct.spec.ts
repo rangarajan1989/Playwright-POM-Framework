@@ -8,7 +8,20 @@ const searchArray = [
 for (let productArray of searchArray) {
   test(`Search Product ${productArray.searchKey}`, async ({ homePage }) => {
     let searchProduct = await homePage.searchProduct(productArray.searchKey);
-    expect(await searchProduct.numberofProduct()).toBe(productArray.count);
+    await expect
+      .poll(
+        async () => {
+          return await searchProduct.numberofProduct();
+        },
+        {
+          message:
+            "Waiting for product grid count to match search array expectations",
+          timeout: 7000, // Polls for up to 7 seconds before failing
+          intervals: [500], // Re-checks every 500 milliseconds
+        },
+      )
+      .toBe(productArray.count);
+    //expect(await searchProduct.numberofProduct()).toEqual(productArray.count);
   });
 }
 
