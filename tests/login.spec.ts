@@ -1,3 +1,4 @@
+import { log } from "console";
 import { expect, test } from "../fixtures/baseFixture";
 import { LoginPage } from "../pages/LoginPage";
 import { parse } from "csv-parse/sync";
@@ -17,6 +18,13 @@ let registrationData: Dataschema[] = parse(fileContent, {
 });
 test("Login to portal", async ({ homePage }) => {
   await expect(homePage.page).toHaveTitle("My Account");
+});
+
+test("Login with invalid credentails", async ({ page, baseURL }) => {
+  const loginPage = new LoginPage(page);
+  await loginPage.navigatetoLogin(baseURL);
+  await loginPage.logintohomePage(getRandomEmail(), "Light@123");
+  expect(await loginPage.invalidLoginErrorMessage()).toContain("Warning");
 });
 
 for (let user of registrationData) {
