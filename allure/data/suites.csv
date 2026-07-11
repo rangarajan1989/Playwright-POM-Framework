@@ -1,2 +1,2 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","4815","Login to portal","Google Chrome","2026-07-09","passed","2026-07-09","","login.spec.ts","",""
+"","13209","Login to portal","webkit","2026-07-11","passed","2026-07-11","","login.spec.ts","",""
