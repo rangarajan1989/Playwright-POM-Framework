@@ -25,6 +25,7 @@ export class ProductPage {
   }
 
   async countProductImages(): Promise<number> {
+    await this.imageCount.first().waitFor({ state: "attached" });
     return await this.imageCount.count();
   }
 

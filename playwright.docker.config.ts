@@ -8,7 +8,7 @@ export default defineConfig({
   /* 🚀 FIX 1: Drop worker threads to 2 or 3 inside Docker containers.
     This prevents memory starvation and allows the CPU cores to process tests smoothly.
   */
-  workers: process.env.CI ? 2 : 4,
+  workers: 2,
 
   /* ⏱️ FIX 2: Increase test timeout execution limits.
     Containers take longer to initialize virtual viewports. Give them 60 or 90 seconds.

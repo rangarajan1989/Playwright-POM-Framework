@@ -14,8 +14,9 @@ export class ResultPage {
   }
 
   async numberofProduct(): Promise<number> {
-    return await this.productNumber.count();
-    console.log(`Product is successfully searched`);
+    const count = await this.productNumber.count();
+    console.log(`URL: ${this.page.url()} | Count: ${count}`);
+    return count;
   }
 
   async clickonProduct(pName: string): Promise<ProductPage> {
