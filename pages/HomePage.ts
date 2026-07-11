@@ -30,7 +30,8 @@ export class HomePage {
 
   async searchProduct(product: string): Promise<ResultPage> {
     await this.elu.fill(this.searchText, product);
-    await this.elu.click(this.searchButton, { force: true, timeout: 4000 });
+    await this.elu.click(this.searchButton, { timeout: 4000 });
+
     return new ResultPage(this.page);
   }
 }

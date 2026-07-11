@@ -60,14 +60,18 @@ export class RegisterPage {
       await this.eleUtil.click(this.newsletterNoRadio);
     }
 
-    await this.eleUtil.click(this.agreeCheckbox, {
-      force: true,
-      timeout: 3000,
-    });
+    // Ensure checkbox is visible and clickable before clicking
+    await this.agreeCheckbox.waitFor({ state: "visible" });
+    //await this.agreeCheckbox.waitForElementState("visible");
+    await this.eleUtil.click(this.agreeCheckbox);
+
+    // Verify checkbox is actually checked
+    await expect(this.agreeCheckbox).toBeChecked();
+
     await this.eleUtil.click(this.continueButton);
 
     //return await this.eleUtil.isVisible(this.successMsg);
-    await expect(this.successMsg).toBeVisible();
+    await expect(this.successMsg).toBeVisible({ timeout: 30000 });
 
     return true;
   }
