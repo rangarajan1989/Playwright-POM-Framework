@@ -54,20 +54,20 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
+    // {
+    //   name: "chromium",
+    //   use: { ...devices["Desktop Chrome"] },
+    // },
+
     {
-      name: "chromium",
-      use: { ...devices["Desktop Chrome"] },
+      name: "firefox",
+      use: { ...devices["Desktop Firefox"] },
     },
 
-    // {
-    //   name: "firefox",
-    //   use: { ...devices["Desktop Firefox"] },
-    // },
-
-    // {
-    //   name: "webkit",
-    //   use: { ...devices["Desktop Safari"] },
-    // },
+    {
+      name: "webkit",
+      use: { ...devices["Desktop Safari"] },
+    },
 
     /* Test against mobile viewports. */
     // {
@@ -84,17 +84,17 @@ export default defineConfig({
     //   name: 'Microsoft Edge',
     //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
     // },
-    // {
-    //   name: "Google Chrome",
-    //   use: {
-    //     channel: "chrome",
-    //     viewport: null,
-    //     launchOptions: {
-    //       args: ["--start-maximized"],
-    //       ignoreDefaultArgs: ["--window-size=1280,720"],
-    //     },
-    //   },
-    // },
+    {
+      name: "Google Chrome",
+      use: {
+        channel: "chrome",
+        viewport: null,
+        launchOptions: {
+          args: ["--start-maximized"],
+          ignoreDefaultArgs: ["--window-size=1280,720"],
+        },
+      },
+    },
   ],
 
   /* Run your local dev server before starting the tests */
