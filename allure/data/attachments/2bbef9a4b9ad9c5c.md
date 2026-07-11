@@ -1,0 +1,64 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: searchproduct.spec.ts >> Search Product samsung
+- Location: tests/searchproduct.spec.ts:9:7
+
+# Error details
+
+```
+Error: page.goto: Test ended.
+Call log:
+  - navigating to "https://naveenautomationlabs.com/opencart/index.php?route=account/login", waiting until "load"
+
+```
+
+# Test source
+
+```ts
+  1  | import { Browser, Locator, Page } from "@playwright/test";
+  2  | import { ElementUtil } from "../util/ElementUtil";
+  3  | import { title } from "node:process";
+  4  | import { HomePage } from "./HomePage";
+  5  | import { RegisterPage } from "./RegisterPage";
+  6  | export class LoginPage {
+  7  |   private readonly page: Page;
+  8  |   private readonly elu: ElementUtil;
+  9  |   private readonly emailId: Locator;
+  10 |   private readonly password: Locator;
+  11 |   private readonly loginButton: Locator;
+  12 |   private readonly registerLink: Locator;
+  13 | 
+  14 |   constructor(page: Page) {
+  15 |     this.page = page;
+  16 |     this.elu = new ElementUtil(page);
+  17 |     this.emailId = page.getByRole("textbox", { name: "E-Mail Address" });
+  18 |     this.password = page.getByRole("textbox", { name: "Password" });
+  19 |     this.loginButton = page.locator(`input[value='Login']`);
+  20 |     this.registerLink = page.getByRole("link", { name: "Register" });
+  21 |   }
+  22 | 
+  23 |   async navigatetoLogin(baseURL: string | undefined) {
+> 24 |     await this.page.goto(baseURL + "?route=account/login");
+     |                     ^ Error: page.goto: Test ended.
+  25 |   }
+  26 | 
+  27 |   async logintohomePage(email: string, password: string): Promise<HomePage> {
+  28 |     await this.elu.fill(this.emailId, email);
+  29 |     await this.elu.fill(this.password, password);
+  30 |     await this.elu.click(this.loginButton);
+  31 |     let titlePage = await this.page.title();
+  32 |     return new HomePage(this.page);
+  33 |   }
+  34 |   async gotoRegistration(): Promise<RegisterPage> {
+  35 |     await this.elu.click(this.registerLink);
+  36 |     return new RegisterPage(this.page);
+  37 |   }
+  38 | }
+  39 | 
+```
