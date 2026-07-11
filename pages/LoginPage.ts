@@ -10,6 +10,7 @@ export class LoginPage {
   private readonly password: Locator;
   private readonly loginButton: Locator;
   private readonly registerLink: Locator;
+  private readonly errorMessage: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -18,6 +19,7 @@ export class LoginPage {
     this.password = page.getByRole("textbox", { name: "Password" });
     this.loginButton = page.locator(`input[value='Login']`);
     this.registerLink = page.getByRole("link", { name: "Register" });
+    this.errorMessage = page.getByText("Warning: No match for E-Mail");
   }
 
   async navigatetoLogin(baseURL: string | undefined) {
@@ -30,6 +32,9 @@ export class LoginPage {
     await this.elu.click(this.loginButton);
     let titlePage = await this.page.title();
     return new HomePage(this.page);
+  }
+  async invalidLoginErrorMessage(): Promise<string | null> {
+    return await this.errorMessage.textContent();
   }
   async gotoRegistration(): Promise<RegisterPage> {
     await this.elu.click(this.registerLink);
