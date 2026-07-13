@@ -1,0 +1,69 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: searchproduct.spec.ts >> Search Product samsung
+- Location: tests/searchproduct.spec.ts:9:7
+
+# Error details
+
+```
+Error: page.goto: Operation was cancelled; maybe frame was detached?
+Call log:
+  - navigating to "https://naveenautomationlabs.com/opencart/index.php?route=account/login", waiting until "load"
+
+```
+
+# Test source
+
+```ts
+  1  | import { Browser, Locator, Page } from "@playwright/test";
+  2  | import { ElementUtil } from "../util/ElementUtil";
+  3  | import { title } from "node:process";
+  4  | import { HomePage } from "./HomePage";
+  5  | import { RegisterPage } from "./RegisterPage";
+  6  | export class LoginPage {
+  7  |   private readonly page: Page;
+  8  |   private readonly elu: ElementUtil;
+  9  |   private readonly emailId: Locator;
+  10 |   private readonly password: Locator;
+  11 |   private readonly loginButton: Locator;
+  12 |   private readonly registerLink: Locator;
+  13 |   private readonly errorMessage: Locator;
+  14 | 
+  15 |   constructor(page: Page) {
+  16 |     this.page = page;
+  17 |     this.elu = new ElementUtil(page);
+  18 |     this.emailId = page.getByRole("textbox", { name: "E-Mail Address" });
+  19 |     this.password = page.getByRole("textbox", { name: "Password" });
+  20 |     this.loginButton = page.locator(`input[value='Login']`);
+  21 |     this.registerLink = page.getByRole("link", { name: "Register" });
+  22 |     this.errorMessage = page.getByText("Warning: No match for E-Mail");
+  23 |   }
+  24 | 
+  25 |   async navigatetoLogin(baseURL: string | undefined) {
+> 26 |     await this.page.goto(baseURL + "?route=account/login");
+     |                     ^ Error: page.goto: Operation was cancelled; maybe frame was detached?
+  27 |   }
+  28 | 
+  29 |   async logintohomePage(email: string, password: string): Promise<HomePage> {
+  30 |     await this.elu.fill(this.emailId, email);
+  31 |     await this.elu.fill(this.password, password);
+  32 |     await this.elu.click(this.loginButton);
+  33 |     let titlePage = await this.page.title();
+  34 |     return new HomePage(this.page);
+  35 |   }
+  36 |   async invalidLoginErrorMessage(): Promise<string | null> {
+  37 |     return await this.errorMessage.textContent();
+  38 |   }
+  39 |   async gotoRegistration(): Promise<RegisterPage> {
+  40 |     await this.elu.click(this.registerLink);
+  41 |     return new RegisterPage(this.page);
+  42 |   }
+  43 | }
+  44 | 
+```
