@@ -41,7 +41,7 @@ export default defineConfig({
     // baseURL: 'http://localhost:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: "on",
+    trace: "on-first-retry",
     headless: !!process.env.CI,
     video: "on",
     baseURL: "https://naveenautomationlabs.com/opencart/index.php",
@@ -59,10 +59,10 @@ export default defineConfig({
     //   use: { ...devices["Desktop Chrome"] },
     // },
 
-    {
-      name: "firefox",
-      use: { ...devices["Desktop Firefox"] },
-    },
+    // {
+    //   name: "firefox",
+    //   use: { ...devices["Desktop Firefox"] },
+    // },
 
     {
       name: "webkit",
@@ -81,20 +81,20 @@ export default defineConfig({
 
     /* Test against branded browsers. */
     // {
-    //   name: 'Microsoft Edge',
-    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
+    //   name: "Microsoft Edge",
+    //   use: { ...devices["Desktop Edge"], channel: "msedge" },
     // },
-    {
-      name: "Google Chrome",
-      use: {
-        channel: "chrome",
-        viewport: null,
-        launchOptions: {
-          args: ["--start-maximized"],
-          ignoreDefaultArgs: ["--window-size=1280,720"],
-        },
-      },
-    },
+    // {
+    //   name: "Google Chrome",
+    //   use: {
+    //     channel: "chrome",
+    //     viewport: null,
+    //     launchOptions: {
+    //       args: ["--start-maximized"],
+    //       ignoreDefaultArgs: ["--window-size=1280,720"],
+    //     },
+    //   },
+    // },
   ],
 
   /* Run your local dev server before starting the tests */
