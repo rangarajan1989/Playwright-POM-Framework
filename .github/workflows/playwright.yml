@@ -62,28 +62,29 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: playwright-report
+          name: playwright-report-${{ github.run_id }}
           path: playwright-report/
-          retention-days: 30
+          retention-days: 90
 
-      - name: Create github-pages directory
+      # ========== Prepare Directory Structure for Specific Run ==========
+      - name: Create github-pages directory structure
         if: always()
         run: |
-          mkdir -p github-pages
+          # Build local directory layout mirroring gh-pages destination
           mkdir -p github-pages/playwright
           mkdir -p github-pages/allure
 
-          # Copy Playwright reports
+          # Copy Playwright report for this run
           if [ -d "playwright-report" ]; then
             cp -r playwright-report/* github-pages/playwright/ 2>/dev/null || true
           fi
 
-          # Create main index.html with links
+          # Create index dashboard landing page for this run
           cat > github-pages/index.html <<'EOF'
           <!DOCTYPE html>
           <html>
           <head>
-            <title>Test Reports</title>
+            <title>Test Reports - Run ${{ github.run_id }}</title>
             <style>
               body { font-family: Arial, sans-serif; margin: 40px; }
               .report-link { display: inline-block; margin: 10px; padding: 15px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; }
@@ -91,7 +92,7 @@ jobs:
             </style>
           </head>
           <body>
-            <h1>📊 Test Reports</h1>
+            <h1>📊 Test Reports for Run #${{ github.run_id }}</h1>
             <a href="playwright/" class="report-link">📋 Playwright Report</a>
             <a href="allure/" class="report-link">📊 Allure Report</a>
           </body>
@@ -100,8 +101,7 @@ jobs:
 
       - name: Install Allure
         if: always()
-        run: |
-          npm install -g allure-commandline
+        run: npm install -g allure-commandline
 
       - name: Generate Allure Report
         if: always()
@@ -129,6 +129,18 @@ jobs:
           EOFHTML
           fi
 
+      # ========== Deploy Run-Specific Directory to GitHub Pages ==========
+      - name: 🌐 Deploy Run Reports to GitHub Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: github-pages
+          destination_dir: runs/${{ github.run_id }}
+          keep_files: true
+
+      # ========== Send Email Notification with Run-Specific Links ==========
       - name: Send Email Notification
         if: always()
         uses: dawidd6/action-send-mail@v3
@@ -156,7 +168,7 @@ jobs:
               </style>
             </head>
             <body>
-              <h2>Playwright Test Execution Summary</h2>
+              <h2>Playwright Test Execution Summary (Run #${{ github.run_id }})</h2>
               <p><strong>Status:</strong> ${{ job.status == 'success' && '🟢 Passed' || '🔴 Failed' }}</p>
               <p><strong>Branch:</strong> ${{ github.ref_name }}</p>
               <p><strong>Commit:</strong> ${{ github.event.head_commit.message }}</p>
@@ -184,36 +196,28 @@ jobs:
                 </tbody>
               </table>
 
-              <p>To view the detailed history and download the full artifact reports, visit the run page:</p>
-              <a href="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" class="btn" style="color: white;">View Workflow Run</a>
+              <p>View permanent HTML reports published for this run:</p>
+              <a href="https://rangarajan1989.github.io/Playwright-POM-Framework/runs/${{ github.run_id }}/" class="btn" style="color: white;">📊 View Published Run Dashboard</a>
+              <br/><br/>
+              <a href="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}">View GitHub Workflow Run Details</a>
             </body>
             </html>
 
-      # ========== Deploy to GitHub Pages ==========
-      - name: 🌐 Deploy to GitHub Pages
-        if: always()
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: github-pages
-          keep_files: true
-
-      # ========== Print Report URLs ==========
+      # ========== Print Permanent Report URLs ==========
       - name: 🔗 Report URLs
         if: always()
         run: |
           echo "============================================"
-          echo "📊 TEST REPORTS PUBLISHED!"
+          echo "📊 PERMANENT TEST REPORTS PUBLISHED FOR RUN #${{ github.run_id }}"
           echo "============================================"
           echo ""
-          echo "🏠 Main Dashboard:"
-          echo "   https://rangarajan1989.github.io/Playwright-POM-Framework/"
+          echo "🏠 Run Dashboard:"
+          echo "   https://rangarajan1989.github.io/Playwright-POM-Framework/runs/${{ github.run_id }}/"
           echo ""
           echo "📋 Playwright Report:"
-          echo "   https://rangarajan1989.github.io/Playwright-POM-Framework/playwright/"
+          echo "   https://rangarajan1989.github.io/Playwright-POM-Framework/runs/${{ github.run_id }}/playwright/"
           echo ""
           echo "📊 Allure Report:"
-          echo "   https://rangarajan1989.github.io/Playwright-POM-Framework/allure/"
+          echo "   https://rangarajan1989.github.io/Playwright-POM-Framework/runs/${{ github.run_id }}/allure/"
           echo ""
           echo "============================================"
