@@ -1,53 +1,67 @@
 import { APIRequestContext } from "@playwright/test";
 
+type HttpMethod = "GET" | "POST" | "PUT" | "DELETE";
+
 export class ApiHelper {
   private readonly request: APIRequestContext;
-  private readonly baseURL: String;
+  private readonly baseURL: string;
 
   constructor(request: APIRequestContext, baseURL: string) {
     this.request = request;
     this.baseURL = baseURL;
   }
 
-  async get(endPoint: string, header?: Record<string, string>) {
-    let response = await this.request.get(`${this.baseURL}${endPoint}`, {
-      headers: header,
-    });
-    console.log("API_URL from env:", process.env.API_URL);
+  private async sendRequest(
+    method: HttpMethod,
+    endPoint: string,
+    options: { headers?: Record<string, string>; data?: object } = {},
+  ) {
+    const url = `${this.baseURL}${endPoint}`;
 
-    return {
-      status: response.status(),
-      body: await response.json(),
-    };
+    let response;
+    switch (method) {
+      case "GET":
+        response = await this.request.get(url, { headers: options.headers });
+        break;
+      case "POST":
+        response = await this.request.post(url, {
+          headers: options.headers,
+          data: options.data,
+        });
+        break;
+      case "PUT":
+        response = await this.request.put(url, {
+          headers: options.headers,
+          data: options.data,
+        });
+        break;
+      case "DELETE":
+        response = await this.request.delete(url, { headers: options.headers });
+        break;
+    }
+
+    console.log(`API ${method} ${url} -> ${response.status()}`);
+
+    const status = response.status();
+    if (method === "DELETE") {
+      return { status };
+    }
+    return { status, body: await response.json() };
   }
 
-  async post(endPoint: string, data: object, header?: Record<string, string>) {
-    let response = await this.request.post(`${this.baseURL}${endPoint}`, {
-      headers: header,
-      data: data,
-    });
-    return {
-      status: response.status(),
-      body: await response.json(),
-    };
+  async get(endPoint: string, headers?: Record<string, string>) {
+    return this.sendRequest("GET", endPoint, { headers });
   }
 
-  async put(endPoint: string, data: object, header?: Record<string, string>) {
-    let response = await this.request.put(`${this.baseURL}${endPoint}`, {
-      headers: header,
-      data: data,
-    });
-    return {
-      status: response.status(),
-      body: await response.json(),
-    };
+  async post(endPoint: string, data: object, headers?: Record<string, string>) {
+    return this.sendRequest("POST", endPoint, { headers, data });
   }
-  async delect(endPoint: string, header?: Record<string, string>) {
-    let response = await this.request.delete(`${this.baseURL}${endPoint}`, {
-      headers: header,
-    });
-    return {
-      status: response.status(),
-    };
+
+  async put(endPoint: string, data: object, headers?: Record<string, string>) {
+    return this.sendRequest("PUT", endPoint, { headers, data });
+  }
+
+  async delete(endPoint: string, headers?: Record<string, string>) {
+    return this.sendRequest("DELETE", endPoint, {});
   }
 }

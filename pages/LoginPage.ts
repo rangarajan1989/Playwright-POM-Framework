@@ -26,11 +26,22 @@ export class LoginPage {
     await this.page.goto(baseURL + "?route=account/login");
   }
 
+  // async logintohomePage(email: string, password: string): Promise<HomePage> {
+  //   await this.elu.fill(this.emailId, email);
+  //   await this.elu.fill(this.password, password);
+  //   await this.elu.click(this.loginButton);
+  //   let titlePage = await this.page.title();
+  //   return new HomePage(this.page);
+
+  // }
   async logintohomePage(email: string, password: string): Promise<HomePage> {
-    await this.elu.fill(this.emailId, email);
-    await this.elu.fill(this.password, password);
-    await this.elu.click(this.loginButton);
-    let titlePage = await this.page.title();
+    await this.elu.fillAndClick(
+      [
+        { locator: this.emailId, value: email },
+        { locator: this.password, value: password },
+      ],
+      this.loginButton,
+    );
     return new HomePage(this.page);
   }
   async invalidLoginErrorMessage(): Promise<string | null> {

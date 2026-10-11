@@ -150,7 +150,11 @@ export class ElementUtil {
    * Get all text content from multiple elements
    */
   async getAllInnerTexts(locator: flexibleLocator): Promise<string[]> {
-    return await this.getLocator(locator).allInnerTexts();
+    if (typeof locator === "string") {
+      return await this.page.locator(locator).allInnerTexts();
+    } else {
+      return locator.allInnerTexts();
+    }
   }
 
   //============================ Element Visibility & State Check ================//
@@ -284,5 +288,15 @@ export class ElementUtil {
       { timeout: this.defaultTimeOut },
     );
     console.log(`selected option ${index} from drop down ${locator}`);
+  }
+
+  async fillAndClick(
+    fields: { locator: Locator; value: string }[],
+    submitButton: Locator,
+  ) {
+    for (const field of fields) {
+      await field.locator.fill(field.value);
+    }
+    await submitButton.click();
   }
 }

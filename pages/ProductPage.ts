@@ -1,7 +1,6 @@
-import { Browser, Locator, Page } from "@playwright/test";
+import { Locator, Page } from "@playwright/test";
 import { ElementUtil } from "../util/ElementUtil";
-import { title } from "node:process";
-import { HomePage } from "./HomePage";
+
 export class ProductPage {
   private readonly page: Page;
   private readonly elu: ElementUtil;
@@ -30,8 +29,14 @@ export class ProductPage {
   }
 
   private async returnmetadataofProduct() {
-    this.productMap.set("ProductName", await this.productHeader.innerText());
-    let product: string[] = await this.productDetails.allInnerTexts();
+    this.productMap.set(
+      "ProductName",
+      await this.elu.getInnerText(this.productHeader),
+    );
+    let product: string[] = await this.elu.getAllInnerTexts(
+      this.productDetails,
+    );
+    console.log(`Product name ${product}`);
     for (let p of product) {
       const metaKey = p.split(":")[0].trim();
       const metaValue = p.split(":")[1].trim();
@@ -40,7 +45,11 @@ export class ProductPage {
   }
 
   private async returproductPrice() {
-    const productPricing: string[] = await this.productPrice.allInnerTexts();
+    const productPricing: string[] = await this.elu.getAllInnerTexts(
+      this.productPrice,
+    );
+    //const productPricing: string[] = await this.productPrice.allInnerTexts();
+    console.log(`ProductPricing ${productPricing}`);
     const productPrice = productPricing[0].trim();
     const productExTax = productPricing[1].split(":")[1].trim();
 

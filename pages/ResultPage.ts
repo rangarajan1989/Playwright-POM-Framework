@@ -1,7 +1,7 @@
-import { Browser, Locator, Page } from "@playwright/test";
+import { Locator, Page } from "@playwright/test";
 import { ElementUtil } from "../util/ElementUtil";
 import { ProductPage } from "../pages/ProductPage";
-import { title } from "node:process";
+
 export class ResultPage {
   private readonly page: Page;
   private readonly elu: ElementUtil;
