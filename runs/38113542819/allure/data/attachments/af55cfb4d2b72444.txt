@@ -1,0 +1,3 @@
+Filled text : macbook into element : getByPlaceholder('Search')
+Clicked on element : locator('div#search>span button.btn.btn-default.btn-lg')
+URL: https://naveenautomationlabs.com/opencart/index.php?route=product/search&search=macbook | Count: 3

@@ -1,0 +1,2 @@
+API POST https://gorest.co.in/public/v2/users -> 201
+API GET https://gorest.co.in/public/v2/users/8661425 -> 200
