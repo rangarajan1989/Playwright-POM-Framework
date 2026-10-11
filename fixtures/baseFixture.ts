@@ -22,6 +22,15 @@ export const test = base.extend<MyFixture>({
     expect(await homePage.isUserLoggedIn()).toBeTruthy();
 
     await use(homePage);
+
+    try {
+      if ((await homePage.isUserLoggedIn()) === true) {
+        await homePage.logoutofHomePage();
+      }
+    } catch (e) {
+      const message = e instanceof Error ? e.message : String(e);
+      console.log(`Teardown failed for test "${testInfo.title}": ${message}`);
+    }
   },
 });
 
