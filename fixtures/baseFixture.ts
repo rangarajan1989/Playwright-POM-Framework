@@ -13,8 +13,12 @@ export const test = base.extend<MyFixture>({
     // Wait for navigation to complete
     await loginPage.navigatetoLogin(baseURL);
 
-    const userName = testInfo.project.metadata.appUserName;
-    const password = testInfo.project.metadata.appPassWord;
+    const userName = process.env.APP_USER_NAME;
+    const password = process.env.APP_PASSWORD;
+
+    if (!userName || !password) {
+      throw new Error("APP_USER_NAME or APP_PASSWORD is missing.");
+    }
 
     const homePage = await loginPage.logintohomePage(userName, password);
 
