@@ -1,4 +1,4 @@
-import { defineConfig } from "@playwright/test";
+import { defineConfig, devices } from "@playwright/test";
 import dotenv from "dotenv";
 import path from "path";
 
@@ -44,6 +44,10 @@ export default defineConfig({
           ignoreDefaultArgs: ["--window-size=1280,720"],
         },
       },
+    },
+    {
+      name: "Microsoft Edge",
+      use: { ...devices["Desktop Edge"], channel: "msedge" },
     },
   ],
 });
