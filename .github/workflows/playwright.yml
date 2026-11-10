@@ -32,7 +32,7 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
-      # Verify that GitHub Secrets are available without printing values
+      # Verify GitHub Secrets without exposing values
       - name: Check environment configuration
         run: |
           node -e "for (const k of ['BASE_URL','APP_USER_NAME','APP_PASSWORD','API_URL','TOKEN']) console.log(k + ': ' + (process.env[k] ? 'SET' : 'MISSING'))"
@@ -43,6 +43,7 @@ jobs:
           API_URL: ${{ secrets.API_URL }}
           TOKEN: ${{ secrets.TOKEN }}
 
+      # Execute Playwright tests
       - name: Run Playwright tests
         id: playwright_tests
         run: npx playwright test --config=playwright.config.ts --reporter=html,json,allure-playwright
@@ -57,6 +58,7 @@ jobs:
           BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
           PLAYWRIGHT_JSON_REPORT: playwright-report/results.json
 
+      # Parse Playwright JSON results
       - name: Parse Test Results
         if: always()
         id: parse_results
@@ -80,6 +82,7 @@ jobs:
           echo "  Failed: $FAILED"
           echo "  Skipped: $SKIPPED"
 
+      # Upload reports as GitHub Actions artifacts
       - name: Upload Playwright artifacts
         if: always()
         uses: actions/upload-artifact@v4
@@ -92,59 +95,102 @@ jobs:
           if-no-files-found: ignore
           retention-days: 90
 
-      # Prepare report directories
+      # Create run-specific reports and latest root landing page
       - name: Create GitHub Pages directory structure
         if: always()
+        env:
+          RUN_ID: ${{ github.run_id }}
         run: |
-          mkdir -p github-pages/playwright
-          mkdir -p github-pages/allure
+          RUN_DIR="github-pages/runs/${RUN_ID}"
 
+          mkdir -p "${RUN_DIR}/playwright"
+          mkdir -p "${RUN_DIR}/allure"
+
+          # Copy Playwright HTML report
           if [ -d "playwright-report" ]; then
-            cp -r playwright-report/* github-pages/playwright/ 2>/dev/null || true
+            cp -r playwright-report/. "${RUN_DIR}/playwright/"
           fi
 
-          cat > github-pages/index.html <<'EOF'
+          # Run-specific dashboard
+          cat > "${RUN_DIR}/index.html" <<EOF
           <!DOCTYPE html>
           <html>
           <head>
-            <title>Test Reports - Run ${{ github.run_id }}</title>
-            <style>
-              body { font-family: Arial, sans-serif; margin: 40px; }
-              .report-link {
-                display: inline-block;
-                margin: 10px;
-                padding: 15px;
-                background: #007bff;
-                color: white;
-                text-decoration: none;
-                border-radius: 5px;
-              }
-            </style>
+            <title>Playwright Reports - Run ${RUN_ID}</title>
           </head>
           <body>
-            <h1>Test Reports for Run #${{ github.run_id }}</h1>
-            <a href="playwright/" class="report-link">Playwright Report</a>
-            <a href="allure/" class="report-link">Allure Report</a>
+            <h1>Playwright Reports - Run ${RUN_ID}</h1>
+            <p><a href="playwright/">Playwright HTML Report</a></p>
+            <p><a href="allure/">Allure Report</a></p>
           </body>
           </html>
           EOF
 
+          # Root landing page points to latest run
+          cat > github-pages/index.html <<EOF
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <title>Playwright Automation Reports</title>
+            <style>
+              body {
+                font-family: Arial, sans-serif;
+                margin: 40px;
+                line-height: 1.6;
+              }
+              a {
+                color: #0969da;
+              }
+            </style>
+          </head>
+          <body>
+            <h1>Playwright Automation Reports</h1>
+            <h2>Latest execution: ${RUN_ID}</h2>
+            <p>
+              <a href="runs/${RUN_ID}/playwright/">
+                View Playwright HTML Report
+              </a>
+            </p>
+            <p>
+              <a href="runs/${RUN_ID}/allure/">
+                View Allure Report
+              </a>
+            </p>
+            <p>
+              <a href="runs/${RUN_ID}/">
+                View Run Dashboard
+              </a>
+            </p>
+          </body>
+          </html>
+          EOF
+
+      # Install Allure CLI
       - name: Install Allure CLI
         if: always()
         run: npm install -g allure-commandline
 
+      # Generate Allure report inside the current run folder
       - name: Generate Allure Report
         if: always()
+        env:
+          RUN_ID: ${{ github.run_id }}
         run: |
+          ALLURE_DIR="github-pages/runs/${RUN_ID}/allure"
+
+          mkdir -p "$ALLURE_DIR"
+
           if [ -d "allure-results" ] && [ "$(ls -A allure-results)" ]; then
-            npx allure generate allure-results -o github-pages/allure --clean
+            allure generate allure-results -o "$ALLURE_DIR" --clean
           else
             echo "No Allure results found."
-            mkdir -p github-pages/allure
-            cat > github-pages/allure/index.html <<'EOF'
+
+            cat > "$ALLURE_DIR/index.html" <<'EOF'
           <!DOCTYPE html>
           <html>
-          <head><title>Allure Report</title></head>
+          <head>
+            <title>Allure Report</title>
+          </head>
           <body>
             <h1>Allure Report</h1>
             <p>No Allure results available for this run.</p>
@@ -153,7 +199,7 @@ jobs:
           EOF
           fi
 
-      # Deploy reports to GitHub Pages
+      # Deploy latest root page and preserve historical run folders
       - name: Deploy reports to GitHub Pages
         if: always() && github.event_name == 'push' && github.ref == 'refs/heads/main'
         uses: peaceiris/actions-gh-pages@v4
@@ -161,14 +207,22 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./github-pages
           publish_branch: gh-pages
-          destination_dir: runs/${{ github.run_id }}
+          keep_files: true
 
+      # Print report URLs
       - name: Print report URLs
         if: always()
+        env:
+          RUN_ID: ${{ github.run_id }}
         run: |
+          echo "Latest Reports Dashboard:"
+          echo "https://rangarajan1989.github.io/Playwright-POM-Framework/"
+
           echo "Run Dashboard:"
-          echo "https://rangarajan1989.github.io/Playwright-POM-Framework/runs/${{ github.run_id }}/"
+          echo "https://rangarajan1989.github.io/Playwright-POM-Framework/runs/${RUN_ID}/"
+
           echo "Playwright Report:"
-          echo "https://rangarajan1989.github.io/Playwright-POM-Framework/runs/${{ github.run_id }}/playwright/"
+          echo "https://rangarajan1989.github.io/Playwright-POM-Framework/runs/${RUN_ID}/playwright/"
+
           echo "Allure Report:"
-          echo "https://rangarajan1989.github.io/Playwright-POM-Framework/runs/${{ github.run_id }}/allure/"
+          echo "https://rangarajan1989.github.io/Playwright-POM-Framework/runs/${RUN_ID}/allure/"
