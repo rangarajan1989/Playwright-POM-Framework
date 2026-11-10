@@ -1,9 +1,33 @@
-
-# Playwright
+# Dependencies
 node_modules/
-/test-results/
-/playwright-report/
-/blob-report/
-/playwright/.cache/
-/playwright/.auth/
-browserStack
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Playwright outputs
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+playwright/.auth/
+
+# BrowserStack
+browserstack/
+browserStack/
+
+# Allure
+allure-results/
+allure-report/
+
+# Logs and generated reports
+log/
+*.log
+results.json
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
