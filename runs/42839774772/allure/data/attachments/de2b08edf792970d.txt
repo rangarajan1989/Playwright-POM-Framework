@@ -1,0 +1,2 @@
+Clicked on element : getByRole('link', { name: 'Logout' })
+Logged Out successfully
