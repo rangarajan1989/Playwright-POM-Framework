@@ -1,7 +1,4 @@
 import { test, expect } from "@playwright/test";
-
-// const TOKEN =
-//   "22a2c4a87d8c9d4466400a6503338f43b5868f2114fca90f356b4c21280d2047";
 const TOKEN = process.env.TOKEN!;
 const BASE_URL = "https://gorest.co.in/public/v2/users";
 
