@@ -6,15 +6,19 @@ on:
   pull_request:
     branches: [main, master]
 
+# Queue runs so two deploys never push to gh-pages at the same time
+concurrency:
+  group: gh-pages-deploy
+  cancel-in-progress: false
+
 jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
 
+    # peaceiris pushes to the gh-pages branch, so only contents: write is needed
     permissions:
       contents: write
-      pages: write
-      id-token: write
 
     steps:
       - name: Checkout repository
@@ -56,26 +60,28 @@ jobs:
           TOKEN: ${{ secrets.TOKEN }}
           BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
           BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
-          PLAYWRIGHT_JSON_REPORT: playwright-report/results.json
+          # Correct variable name for the JSON reporter. Kept outside
+          # playwright-report/ so the HTML reporter cannot wipe it.
+          PLAYWRIGHT_JSON_OUTPUT_NAME: results.json
 
       # Parse Playwright JSON results
       - name: Parse Test Results
         if: always()
         id: parse_results
         run: |
-          if [ -f playwright-report/results.json ]; then
-            PASSED=$(node -p "require('./playwright-report/results.json').stats.expected || 0")
-            FAILED=$(node -p "require('./playwright-report/results.json').stats.unexpected || 0")
-            SKIPPED=$(node -p "require('./playwright-report/results.json').stats.skipped || 0")
+          if [ -f results.json ]; then
+            PASSED=$(node -p "require('./results.json').stats.expected || 0")
+            FAILED=$(node -p "require('./results.json').stats.unexpected || 0")
+            SKIPPED=$(node -p "require('./results.json').stats.skipped || 0")
           else
             PASSED=0
             FAILED=0
             SKIPPED=0
           fi
 
-          echo "passed=$PASSED" >> $GITHUB_OUTPUT
-          echo "failed=$FAILED" >> $GITHUB_OUTPUT
-          echo "skipped=$SKIPPED" >> $GITHUB_OUTPUT
+          echo "passed=$PASSED" >> "$GITHUB_OUTPUT"
+          echo "failed=$FAILED" >> "$GITHUB_OUTPUT"
+          echo "skipped=$SKIPPED" >> "$GITHUB_OUTPUT"
 
           echo "Test Results:"
           echo "  Passed: $PASSED"
@@ -92,10 +98,16 @@ jobs:
             playwright-report/
             test-results/
             allure-results/
+            results.json
           if-no-files-found: ignore
           retention-days: 90
 
-      # Create run-specific reports and latest root landing page
+      # Install Allure CLI
+      - name: Install Allure CLI
+        if: always()
+        run: npm install -g allure-commandline
+
+      # Build the Pages folder: run-specific reports + latest landing page
       - name: Create GitHub Pages directory structure
         if: always()
         env:
@@ -109,6 +121,16 @@ jobs:
           # Copy Playwright HTML report
           if [ -d "playwright-report" ]; then
             cp -r playwright-report/. "${RUN_DIR}/playwright/"
+          else
+            echo "<h1>No Playwright report for this run</h1>" > "${RUN_DIR}/playwright/index.html"
+          fi
+
+          # Generate Allure report for THIS run only
+          if [ -d "allure-results" ] && [ "$(ls -A allure-results)" ]; then
+            allure generate allure-results -o "${RUN_DIR}/allure" --clean
+          else
+            echo "No Allure results found."
+            echo "<h1>No Allure results available for this run</h1>" > "${RUN_DIR}/allure/index.html"
           fi
 
           # Run-specific dashboard
@@ -116,6 +138,7 @@ jobs:
           <!DOCTYPE html>
           <html>
           <head>
+            <meta charset="utf-8">
             <title>Playwright Reports - Run ${RUN_ID}</title>
           </head>
           <body>
@@ -126,11 +149,12 @@ jobs:
           </html>
           EOF
 
-          # Root landing page points to latest run
+          # Root landing page points to the latest run
           cat > github-pages/index.html <<EOF
           <!DOCTYPE html>
           <html>
           <head>
+            <meta charset="utf-8">
             <title>Playwright Automation Reports</title>
             <style>
               body {
@@ -146,68 +170,23 @@ jobs:
           <body>
             <h1>Playwright Automation Reports</h1>
             <h2>Latest execution: ${RUN_ID}</h2>
-            <p>
-              <a href="runs/${RUN_ID}/playwright/">
-                View Playwright HTML Report
-              </a>
-            </p>
-            <p>
-              <a href="runs/${RUN_ID}/allure/">
-                View Allure Report
-              </a>
-            </p>
-            <p>
-              <a href="runs/${RUN_ID}/">
-                View Run Dashboard
-              </a>
-            </p>
+            <p><a href="runs/${RUN_ID}/playwright/">View Playwright HTML Report</a></p>
+            <p><a href="runs/${RUN_ID}/allure/">View Allure Report</a></p>
+            <p><a href="runs/${RUN_ID}/">View Run Dashboard</a></p>
           </body>
           </html>
           EOF
-
-      # Install Allure CLI
-      - name: Install Allure CLI
-        if: always()
-        run: npm install -g allure-commandline
-
-      # Generate Allure report inside the current run folder
-      - name: Generate Allure Report
-        if: always()
-        env:
-          RUN_ID: ${{ github.run_id }}
-        run: |
-          ALLURE_DIR="github-pages/runs/${RUN_ID}/allure"
-
-          mkdir -p "$ALLURE_DIR"
-
-          if [ -d "allure-results" ] && [ "$(ls -A allure-results)" ]; then
-            allure generate allure-results -o "$ALLURE_DIR" --clean
-          else
-            echo "No Allure results found."
-
-            cat > "$ALLURE_DIR/index.html" <<'EOF'
-          <!DOCTYPE html>
-          <html>
-          <head>
-            <title>Allure Report</title>
-          </head>
-          <body>
-            <h1>Allure Report</h1>
-            <p>No Allure results available for this run.</p>
-          </body>
-          </html>
-          EOF
-          fi
 
       # Deploy latest root page and preserve historical run folders
       - name: Deploy reports to GitHub Pages
-        if: always() && github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: always() && github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./github-pages
           publish_branch: gh-pages
           keep_files: true
+          commit_message: "deploy: run ${{ github.run_id }}"
 
       # Print report URLs
       - name: Print report URLs
