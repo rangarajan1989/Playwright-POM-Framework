@@ -10,30 +10,51 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+
     permissions:
       contents: write
       pages: write
       id-token: write
-    steps:
-      - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: lts/*
+          node-version: "22"
+          cache: npm
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Install Allure Reporter
-        run: npm install --save-dev allure-playwright
-
-      - name: Install Playwright Browsers
+      - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
+      # Verify that GitHub Secrets are available without printing values
+      - name: Check environment configuration
+        run: |
+          node -e "for (const k of ['BASE_URL','APP_USER_NAME','APP_PASSWORD','API_URL','TOKEN']) console.log(k + ': ' + (process.env[k] ? 'SET' : 'MISSING'))"
+        env:
+          BASE_URL: ${{ secrets.BASE_URL }}
+          APP_USER_NAME: ${{ secrets.APP_USER_NAME }}
+          APP_PASSWORD: ${{ secrets.APP_PASSWORD }}
+          API_URL: ${{ secrets.API_URL }}
+          TOKEN: ${{ secrets.TOKEN }}
+
       - name: Run Playwright tests
-        if: always()
+        id: playwright_tests
         run: npx playwright test --config=playwright.config.ts --reporter=html,json,allure-playwright
         env:
+          CI: true
+          BASE_URL: ${{ secrets.BASE_URL }}
+          APP_USER_NAME: ${{ secrets.APP_USER_NAME }}
+          APP_PASSWORD: ${{ secrets.APP_PASSWORD }}
+          API_URL: ${{ secrets.API_URL }}
+          TOKEN: ${{ secrets.TOKEN }}
+          BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
           PLAYWRIGHT_JSON_REPORT: playwright-report/results.json
 
       - name: Parse Test Results
@@ -59,27 +80,29 @@ jobs:
           echo "  Failed: $FAILED"
           echo "  Skipped: $SKIPPED"
 
-      - uses: actions/upload-artifact@v4
+      - name: Upload Playwright artifacts
         if: always()
+        uses: actions/upload-artifact@v4
         with:
           name: playwright-report-${{ github.run_id }}
-          path: playwright-report/
+          path: |
+            playwright-report/
+            test-results/
+            allure-results/
+          if-no-files-found: ignore
           retention-days: 90
 
-      # ========== Prepare Directory Structure for Specific Run ==========
-      - name: Create github-pages directory structure
+      # Prepare report directories
+      - name: Create GitHub Pages directory structure
         if: always()
         run: |
-          # Build local directory layout mirroring gh-pages destination
           mkdir -p github-pages/playwright
           mkdir -p github-pages/allure
 
-          # Copy Playwright report for this run
           if [ -d "playwright-report" ]; then
             cp -r playwright-report/* github-pages/playwright/ 2>/dev/null || true
           fi
 
-          # Create index dashboard landing page for this run
           cat > github-pages/index.html <<'EOF'
           <!DOCTYPE html>
           <html>
@@ -87,19 +110,26 @@ jobs:
             <title>Test Reports - Run ${{ github.run_id }}</title>
             <style>
               body { font-family: Arial, sans-serif; margin: 40px; }
-              .report-link { display: inline-block; margin: 10px; padding: 15px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; }
-              .report-link:hover { background: #0056b3; }
+              .report-link {
+                display: inline-block;
+                margin: 10px;
+                padding: 15px;
+                background: #007bff;
+                color: white;
+                text-decoration: none;
+                border-radius: 5px;
+              }
             </style>
           </head>
           <body>
-            <h1>📊 Test Reports for Run #${{ github.run_id }}</h1>
-            <a href="playwright/" class="report-link">📋 Playwright Report</a>
-            <a href="allure/" class="report-link">📊 Allure Report</a>
+            <h1>Test Reports for Run #${{ github.run_id }}</h1>
+            <a href="playwright/" class="report-link">Playwright Report</a>
+            <a href="allure/" class="report-link">Allure Report</a>
           </body>
           </html>
           EOF
 
-      - name: Install Allure
+      - name: Install Allure CLI
         if: always()
         run: npm install -g allure-commandline
 
@@ -109,115 +139,36 @@ jobs:
           if [ -d "allure-results" ] && [ "$(ls -A allure-results)" ]; then
             npx allure generate allure-results -o github-pages/allure --clean
           else
-            echo "No allure results found, creating placeholder..."
+            echo "No Allure results found."
             mkdir -p github-pages/allure
-            cat > github-pages/allure/index.html << 'EOFHTML'
+            cat > github-pages/allure/index.html <<'EOF'
           <!DOCTYPE html>
           <html>
-          <head>
-            <title>Allure Report</title>
-            <style>
-              body { font-family: Arial, sans-serif; margin: 40px; text-align: center; }
-              h1 { color: #333; }
-            </style>
-          </head>
+          <head><title>Allure Report</title></head>
           <body>
-            <h1>📊 Allure Report</h1>
-            <p>Allure report will be available after the first test run with results.</p>
+            <h1>Allure Report</h1>
+            <p>No Allure results available for this run.</p>
           </body>
           </html>
-          EOFHTML
+          EOF
           fi
 
-      # ========== Deploy Run-Specific Directory to GitHub Pages ==========
-      - name: 🌐 Deploy Run Reports to GitHub Pages
-        if: always()
-        uses: peaceiris/actions-gh-pages@v3
+      # Deploy reports to GitHub Pages
+      - name: Deploy reports to GitHub Pages
+        if: always() && github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./github-pages
           publish_branch: gh-pages
-          publish_dir: github-pages
           destination_dir: runs/${{ github.run_id }}
-          keep_files: true
 
-      # ========== Send Email Notification with Run-Specific Links ==========
-      - name: Send Email Notification
-        if: always()
-        uses: dawidd6/action-send-mail@v3
-        with:
-          server_address: smtp.gmail.com
-          server_port: 465
-          username: ${{ secrets.MAIL_USERNAME }}
-          password: ${{ secrets.MAIL_PASSWORD }}
-          subject: "${{ job.status == 'success' && '✅' || '❌' }} Playwright Test Result: ${{ job.status }} (${{ github.repository }})"
-          to: rangarajanragavan@gmail.com
-          from: GitHub Actions Auditor <rangarajanragavan@gmail.com>
-          html_body: |
-            <!DOCTYPE html>
-            <html>
-            <head>
-              <style>
-                body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-                .summary-table { border-collapse: collapse; width: 100%; max-width: 400px; margin: 15px 0; }
-                .summary-table th, .summary-table td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-                .summary-table th { background-color: #f2f2f2; }
-                .pass { color: #28a745; font-weight: bold; }
-                .fail { color: #dc3545; font-weight: bold; }
-                .skip { color: #6c757d; font-weight: bold; }
-                .btn { display: inline-block; padding: 10px 15px; background-color: #007bff; color: white; text-decoration: none; border-radius: 4px; margin-top: 15px; }
-              </style>
-            </head>
-            <body>
-              <h2>Playwright Test Execution Summary (Run #${{ github.run_id }})</h2>
-              <p><strong>Status:</strong> ${{ job.status == 'success' && '🟢 Passed' || '🔴 Failed' }}</p>
-              <p><strong>Branch:</strong> ${{ github.ref_name }}</p>
-              <p><strong>Commit:</strong> ${{ github.event.head_commit.message }}</p>
-
-              <table class="summary-table">
-                <thead>
-                  <tr>
-                    <th>Metric</th>
-                    <th>Count</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>✅ Passed Tests</td>
-                    <td class="pass">${{ steps.parse_results.outputs.passed }} tests</td>
-                  </tr>
-                  <tr>
-                    <td>❌ Failed Tests</td>
-                    <td class="fail">${{ steps.parse_results.outputs.failed }} tests</td>
-                  </tr>
-                  <tr>
-                    <td>⏭️  Skipped Tests</td>
-                    <td class="skip">${{ steps.parse_results.outputs.skipped }} tests</td>
-                  </tr>
-                </tbody>
-              </table>
-
-              <p>View permanent HTML reports published for this run:</p>
-              <a href="https://rangarajan1989.github.io/Playwright-POM-Framework/runs/${{ github.run_id }}/" class="btn" style="color: white;">📊 View Published Run Dashboard</a>
-              <br/><br/>
-              <a href="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}">View GitHub Workflow Run Details</a>
-            </body>
-            </html>
-
-      # ========== Print Permanent Report URLs ==========
-      - name: 🔗 Report URLs
+      - name: Print report URLs
         if: always()
         run: |
-          echo "============================================"
-          echo "📊 PERMANENT TEST REPORTS PUBLISHED FOR RUN #${{ github.run_id }}"
-          echo "============================================"
-          echo ""
-          echo "🏠 Run Dashboard:"
-          echo "   https://rangarajan1989.github.io/Playwright-POM-Framework/runs/${{ github.run_id }}/"
-          echo ""
-          echo "📋 Playwright Report:"
-          echo "   https://rangarajan1989.github.io/Playwright-POM-Framework/runs/${{ github.run_id }}/playwright/"
-          echo ""
-          echo "📊 Allure Report:"
-          echo "   https://rangarajan1989.github.io/Playwright-POM-Framework/runs/${{ github.run_id }}/allure/"
-          echo ""
-          echo "============================================"
+          echo "Run Dashboard:"
+          echo "https://rangarajan1989.github.io/Playwright-POM-Framework/runs/${{ github.run_id }}/"
+          echo "Playwright Report:"
+          echo "https://rangarajan1989.github.io/Playwright-POM-Framework/runs/${{ github.run_id }}/playwright/"
+          echo "Allure Report:"
+          echo "https://rangarajan1989.github.io/Playwright-POM-Framework/runs/${{ github.run_id }}/allure/"
