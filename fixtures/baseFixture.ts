@@ -7,7 +7,7 @@ type MyFixture = {
 };
 
 export const test = base.extend<MyFixture>({
-  homePage: async ({ page, baseURL }, use, testInfo) => {
+  homePage: async ({ page, baseURL }, use) => {
     const loginPage = new LoginPage(page);
 
     // Wait for navigation to complete
@@ -21,21 +21,8 @@ export const test = base.extend<MyFixture>({
     }
 
     const homePage = await loginPage.logintohomePage(userName, password);
-
-    // Wait for the async login verification
     expect(await homePage.isUserLoggedIn()).toBeTruthy();
-
     await use(homePage);
-
-    try {
-      if ((await homePage.isUserLoggedIn()) === true) {
-        await homePage.logoutofHomePage();
-      }
-    } catch (e) {
-      const message = e instanceof Error ? e.message : String(e);
-      console.log(`Teardown failed for test "${testInfo.title}": ${message}`);
-    }
   },
 });
-
 export { expect };

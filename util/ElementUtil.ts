@@ -1,4 +1,4 @@
-import { Page, Locator } from "@playwright/test";
+import { Page, Locator, expect } from "@playwright/test";
 
 type flexibleLocator = string | Locator;
 
@@ -160,7 +160,7 @@ export class ElementUtil {
   //============================ Element Visibility & State Check ================//
 
   /**
-   * check element is hidden
+   * check element is visible
    */
   async isVisible(locator: flexibleLocator, index?: number): Promise<boolean> {
     return await this.getLocator(locator, index).isVisible({

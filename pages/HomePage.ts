@@ -12,7 +12,7 @@ export class HomePage {
   constructor(page: Page) {
     this.page = page;
     this.elu = new ElementUtil(page);
-    this.logOut = page.getByRole("link", { name: "Logout" });
+    this.logOut = page.getByRole("link", { name: "Logout", exact: true });
     this.searchText = page.getByPlaceholder("Search");
     this.searchButton = page.locator(
       `div#search>span button.btn.btn-default.btn-lg`,
