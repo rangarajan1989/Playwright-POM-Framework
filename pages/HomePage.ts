@@ -12,11 +12,10 @@ export class HomePage {
   constructor(page: Page) {
     this.page = page;
     this.elu = new ElementUtil(page);
-    this.logOut = page.getByRole("link", { name: "Logout" });
+    this.logOut = page.getByRole("link", { name: "Logout", exact: true });
     this.searchText = page.getByPlaceholder("Search");
-    this.searchButton = page.locator(
-      `div#search>span button.btn.btn-default.btn-lg`,
-    );
+    this.searchButton = page.getByRole("button").filter({ hasText: /^$/ });
+    //getByRole('button').filter({ hasText: /^$/ })
   }
 
   async isUserLoggedIn(): Promise<boolean> {
@@ -30,7 +29,7 @@ export class HomePage {
 
   async searchProduct(product: string): Promise<ResultPage> {
     await this.elu.fill(this.searchText, product);
-    await this.elu.click(this.searchButton, { timeout: 4000 });
+    await this.elu.click(this.searchButton);
 
     return new ResultPage(this.page);
   }

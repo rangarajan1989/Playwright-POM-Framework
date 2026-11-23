@@ -1,4 +1,3 @@
-import { log } from "console";
 import { expect, test } from "../fixtures/baseFixture";
 import { LoginPage } from "../pages/LoginPage";
 import { parse } from "csv-parse/sync";
