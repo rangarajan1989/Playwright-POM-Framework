@@ -35,7 +35,7 @@ export default defineConfig({
 
   projects: [
     {
-      name: "Google Chrome",
+      name: "chrome",
       use: {
         channel: "chrome",
         viewport: null,
