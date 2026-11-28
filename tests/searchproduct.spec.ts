@@ -1,4 +1,3 @@
-import { LoginPage } from "../pages/LoginPage";
 import { test, expect } from "../fixtures/baseFixture";
 
 const searchArray = [
@@ -6,7 +5,9 @@ const searchArray = [
   { searchKey: "samsung", count: 2 },
 ];
 for (const productArray of searchArray) {
-  test(`Search Product ${productArray.searchKey}`, async ({ homePage }) => {
+  test(`@regression Search Product ${productArray.searchKey}`, async ({
+    homePage,
+  }) => {
     const searchProduct = await homePage.searchProduct(productArray.searchKey);
 
     await expect
@@ -18,13 +19,15 @@ for (const productArray of searchArray) {
       .toBe(productArray.count);
   });
 }
-test(`Click on Product and get image count`, async ({ homePage }) => {
+test(`@regression Click on Product and get image count`, async ({
+  homePage,
+}) => {
   let searchProduct = await homePage.searchProduct("macbook");
   let productPage = await searchProduct.clickonProduct("MacBook Pro");
   expect(await productPage.countProductImages()).toBe(4);
 });
 
-test(`Get Product MetaData`, async ({ homePage }) => {
+test(`@regression Get Product MetaData`, async ({ homePage }) => {
   let searchProduct = await homePage.searchProduct("macbook");
   let productPage = await searchProduct.clickonProduct("MacBook Pro");
   await productPage.printproductDetails();
