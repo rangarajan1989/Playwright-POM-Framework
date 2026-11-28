@@ -1,0 +1,3 @@
+Filled text : macbook into element : getByPlaceholder('Search')
+Clicked on element : getByRole('button').filter({ hasText: /^$/ })
+Clicked on element : getByRole('link', { name: 'MacBook Pro' })
