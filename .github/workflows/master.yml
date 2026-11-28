@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       environment:
-        description: 'Run up to environment'
+        description: "Run up to environment"
         required: true
-        default: 'QA'
+        default: "QA"
         type: choice
         options:
           - dev
@@ -26,7 +26,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 24
-          cache: 'npm'
+          cache: "npm"
 
       - name: Install dependencies
         run: npm ci
@@ -55,7 +55,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 24
-          cache: 'npm'
+          cache: "npm"
 
       - name: Cache Playwright browsers
         id: pw-cache-dev
@@ -119,7 +119,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 24
-          cache: 'npm'
+          cache: "npm"
 
       - name: Cache Playwright browsers
         id: pw-cache-qa
@@ -183,7 +183,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 24
-          cache: 'npm'
+          cache: "npm"
 
       - name: Cache Playwright browsers
         id: pw-cache-stage
@@ -248,7 +248,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 24
-          cache: 'npm'
+          cache: "npm"
 
       - name: Cache Playwright browsers
         id: pw-cache-prod
@@ -303,6 +303,3 @@ jobs:
           echo "QA Regression: ${{ needs.regression-qa.result }}"
           echo "STAGE Sanity:  ${{ needs.sanity-stage.result }}"
           echo "PROD Smoke:    ${{ needs.smoke-prod.result }}"
-```[cite: 4, 7]
-
-Make sure `playwright.config.ts` defines a project named `chrome` (for example with `channel: 'chrome'`), otherwise `--project=chrome` will fail to match a project[cite: 7].
