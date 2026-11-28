@@ -15,7 +15,7 @@ let registrationData: Dataschema[] = parse(fileContent, {
   columns: true,
   skip_empty_lines: true,
 });
-test("Login to portal", async ({ homePage }) => {
+test("@smoke Login to portal", async ({ homePage }) => {
   await expect(homePage.page).toHaveTitle("My Account");
 });
 

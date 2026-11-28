@@ -9,7 +9,7 @@ const headers = {
   Accept: "application/json",
 };
 
-test("e2e crud flow test", async ({ request }) => {
+test("@regression e2e crud flow test", async ({ request }) => {
   console.log("===================POST CALL ==============");
 
   //step 1 : Create a user:
