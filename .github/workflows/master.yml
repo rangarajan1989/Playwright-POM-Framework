@@ -80,10 +80,10 @@ jobs:
         env:
           ENV: dev
           BASE_URL: ${{ secrets.BASE_URL }}
-          USERNAME: ${{ secrets.USERNAME }}
-          PASSWORD: ${{ secrets.PASSWORD }}
-          API_BASE_URL: ${{ secrets.API_BASE_URL }}
-          API_TOKEN: ${{ secrets.API_TOKEN }}
+          APP_USER_NAME: ${{ secrets.APP_USER_NAME }}
+          APP_PASSWORD: ${{ secrets.APP_PASSWORD }}
+          API_URL: ${{ secrets.API_URL }}
+          TOKEN: ${{ secrets.TOKEN }}
           OAUTH_CLIENT_ID: ${{ secrets.OAUTH_CLIENT_ID }}
           OAUTH_CLIENT_SECRET: ${{ secrets.OAUTH_CLIENT_SECRET }}
           GRANT_TYPE: ${{ secrets.GRANT_TYPE }}
@@ -144,10 +144,10 @@ jobs:
         env:
           ENV: qa
           BASE_URL: ${{ secrets.BASE_URL }}
-          USERNAME: ${{ secrets.USERNAME }}
-          PASSWORD: ${{ secrets.PASSWORD }}
-          API_BASE_URL: ${{ secrets.API_BASE_URL }}
-          API_TOKEN: ${{ secrets.API_TOKEN }}
+          APP_USER_NAME: ${{ secrets.APP_USER_NAME }}
+          APP_PASSWORD: ${{ secrets.APP_PASSWORD }}
+          API_URL: ${{ secrets.API_URL }}
+          TOKEN: ${{ secrets.TOKEN }}
           OAUTH_CLIENT_ID: ${{ secrets.OAUTH_CLIENT_ID }}
           OAUTH_CLIENT_SECRET: ${{ secrets.OAUTH_CLIENT_SECRET }}
           GRANT_TYPE: ${{ secrets.GRANT_TYPE }}
@@ -208,10 +208,10 @@ jobs:
         env:
           ENV: stage
           BASE_URL: ${{ secrets.BASE_URL }}
-          USERNAME: ${{ secrets.USERNAME }}
-          PASSWORD: ${{ secrets.PASSWORD }}
-          API_BASE_URL: ${{ secrets.API_BASE_URL }}
-          API_TOKEN: ${{ secrets.API_TOKEN }}
+          APP_USER_NAME: ${{ secrets.APP_USER_NAME }}
+          APP_PASSWORD: ${{ secrets.APP_PASSWORD }}
+          API_URL: ${{ secrets.API_URL }}
+          TOKEN: ${{ secrets.TOKEN }}
           OAUTH_CLIENT_ID: ${{ secrets.OAUTH_CLIENT_ID }}
           OAUTH_CLIENT_SECRET: ${{ secrets.OAUTH_CLIENT_SECRET }}
           GRANT_TYPE: ${{ secrets.GRANT_TYPE }}
@@ -273,10 +273,10 @@ jobs:
         env:
           ENV: prod
           BASE_URL: ${{ secrets.BASE_URL }}
-          USERNAME: ${{ secrets.USERNAME }}
-          PASSWORD: ${{ secrets.PASSWORD }}
-          API_BASE_URL: ${{ secrets.API_BASE_URL }}
-          API_TOKEN: ${{ secrets.API_TOKEN }}
+          APP_USER_NAME: ${{ secrets.APP_USER_NAME }}
+          APP_PASSWORD: ${{ secrets.APP_PASSWORD }}
+          API_URL: ${{ secrets.API_URL }}
+          TOKEN: ${{ secrets.TOKEN }}
           OAUTH_CLIENT_ID: ${{ secrets.OAUTH_CLIENT_ID }}
           OAUTH_CLIENT_SECRET: ${{ secrets.OAUTH_CLIENT_SECRET }}
           GRANT_TYPE: ${{ secrets.GRANT_TYPE }}
