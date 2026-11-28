@@ -93,7 +93,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: dev-sanity-html-report
-          path: reports/html-report/
+          path: playwright-report/
           retention-days: 30
 
   deploy-qa:
@@ -157,7 +157,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: qa-regression-html-report
-          path: reports/html-report/
+          path: playwright-report/
           retention-days: 30
 
   deploy-stage:
@@ -221,7 +221,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: stage-sanity-html-report
-          path: reports/html-report/
+          path: playwright-report/
           retention-days: 30
 
   deploy-prod:
@@ -286,7 +286,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: prod-smoke-html-report
-          path: reports/html-report/
+          path: playwright-report/
           retention-days: 30
 
   summary:
